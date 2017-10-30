@@ -4,7 +4,7 @@
     
   GOES was developed with Python and implemented on Apache Spark under Unix and Linux platform.  Apache Spark is a high-performance computing architecture to run on HDFS of Hadoop or on a stand-alone multi-core computer in parallel.
     
-  The detail description of GOES’s framework is provided [here]().  
+  The detail description of GOES’s framework is provided [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-detail-description-of-goess-framework).  
     
   The installing and running manual of GOES is [here]().  
     
