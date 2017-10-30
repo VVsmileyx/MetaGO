@@ -197,15 +197,15 @@ AUC_filter_down/part-xxx:
 - Dataset:25 test healthy samples and 25 patient test samples [download](https://github.com/VVsmileyx/GOES/blob/master/testDATA.rar)  
 - Running steps:  
 	- Step1: download testData and GOES souce code  
-	- Step2: get the fileList of test data:  
+	- Step2: get the fileList of test data  
 	  
 	*`$ cd testData`*  
 	*`$ pwd # get the absolute path of testData, e.g /home/usr/testDATA/`*  
 	*`$ ls /home/usr/testDATA/H*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # /home/usr/GOES/GOES_SoueceCode/ is the absolute path of sorce codes of GOES`*
-	*`$ ls /home/usr/testDATA/P*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # get the fileList of test data`*  
+	*`$ ls /home/usr/testDATA/P*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # get the fileList of test data`*  
 	  
 	- Step3: run GOES:  
 	  
-	*`$ cd home/usr/GOES/GOES_SoueceCode/`*  
-	  
+	*`$ cd home/usr/GOES/GOES_SoueceCode`*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 7 -R 0.7 -C 0.7 -X 1 -L 0.5 -W chi2-test -O /home/wangying/fulei/program/testResult3 -U -S -Z `*
 	
