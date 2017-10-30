@@ -36,4 +36,5 @@ You need set the dsk and sratoolkit path to environment variables, you can use t
    
    *`$ echo ‘ export PATH=Your dsk path:$PATH ‘ >> ~/.bashrc`*  
 	 *`$ echo ‘export PATH=Your sratoolkit path:$PATH ‘ >> ~/.bashrc`*  
+then use command *`source ~/.bashrc`* to make it effective
 
