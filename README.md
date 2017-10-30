@@ -69,6 +69,7 @@ Example：The input file is Filelist.txt
   
 ### 2.command line  
 - The main running command is *`$ bash GOES.sh`* with following options:  
+  
    -I, --inputData: The type of input data, you can only choose 'RAW' or 'MATRIX'.  
    -F, --fileList: The input fileList.  
    -N, --n1: The number of samples belong to group 1.  
@@ -88,4 +89,5 @@ Example：The input file is Filelist.txt
    -Z, --cleanUp: If choose this option, all Intermediate files will be cleaned up, including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
    -h, --help: show the help message.  
      
-
+- Examples:  
+*`$ bash-3.2$ bash GOES.sh –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W AUC –O /home/usr/GOES/ -Z`*
