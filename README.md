@@ -53,21 +53,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
      
 ### Running of GOES Pipeline  
   
-#### 1.Input file  
-The input file is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats. All the training samples are list with complete path and the samples belong to same group must arrange together. (e.g. line1 to linek of the list belongs to group 1 and linek+1 to lineN belongs to group 2)  
-  
-Example：The input file is Filelist.txt  
-*`$ cat filelist.txt`*  
-`/home/…/H1.fasta`  
-`/home/…/H2.fasta`  
-`…`  
-`/home/…/H25.fasta`  
-`/home/…/P1.fasta`  
-`/home/…/P2.fasta`  
-`…`  
-`/home/…/P25.fasta`  
-  
-#### 2.command line  
+#### 1.command line  
 - The main running command is *`$ bash GOES.sh`* with following options:  
   
    -I, --inputData: The type of input data, you can only choose 'RAW' or 'MATRIX'.  
@@ -94,6 +80,21 @@ Example：The input file is Filelist.txt
 (The input file is Filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is AUC and the threshold of AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
 (2)*`$ bash-3.2$ bash test.sh –F fileList.txt –N 25 –M 25 –K 10 –m 1 –T 0.01 –C 0.01 –W TK –O /home/usr/GOES/ -S –U –Z`*  
 (The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. The filter function is T-test and chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering high-sparse features and all saved files are perserved in /home/usr/GOES/ )  
+  
+#### 2.Input file  
+The input file is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats. All the training samples are list with complete path and the samples belong to same group must arrange together. (e.g. line1 to linek of the list belongs to group 1 and linek+1 to lineN belongs to group 2)  
+  
+Example：The input file is Filelist.txt  
+  
+  *`$ cat filelist.txt`*  
+  `/home/…/H1.fasta`  
+  `/home/…/H2.fasta`  
+  `…`  
+  `/home/…/H25.fasta`  
+  `/home/…/P1.fasta`  
+  `/home/…/P2.fasta`  
+  `…`  
+  `/home/…/P25.fasta`  
   
 #### 3.Output files  
 - (1) The group-specific k-mer features  
@@ -193,4 +194,18 @@ AUC_filter_down/part-xxx:
      
 ## The demo of GOES on testing dataset  
 
-
+- Dataset:25 test healthy samples and 25 patient test samples [download](https://github.com/VVsmileyx/GOES/blob/master/testDATA.rar)  
+- Running steps:  
+	- Step1: download testData and GOES souce code  
+	- Step2: get the fileList of test data:  
+	  
+	*`$ cd testData`*  
+	*`$ pwd # get the absolute path of testData, e.g /home/usr/testDATA/`*  
+	*`$ ls /home/usr/testDATA/H*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # /home/usr/GOES/GOES_SoueceCode/ is the absolute path of sorce codes of GOES`*
+	*`$ ls /home/usr/testDATA/P*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # get the fileList of test data`*  
+	  
+	- Step3: run GOES:  
+	  
+	*`$ cd home/usr/GOES/GOES_SoueceCode/`*  
+	  
+	
