@@ -34,8 +34,10 @@ Apache Spark is a fast big data analytics engine on MapReduce framework and Hado
      
 You need set the dsk and sratoolkit path to environment variables, you can use the following command to set environment variables:  
    
-    *`$ echo ‘ export PATH=Your dsk path:$PATH ‘ >> ~/.bashrc`*  
-    *`$ echo ‘export PATH=Your sratoolkit path:$PATH ‘ >> ~/.bashrc`*  
+   *`$ echo ‘ export PATH=Your dsk path:$PATH ‘ >> ~/.bashrc`*  
+   *`$ echo ‘export PATH=Your sratoolkit path:$PATH ‘ >> ~/.bashrc`*  
 	   
-then use command *`$ source ~/.bashrc`* to make it effective
+then use command *`$ source ~/.bashrc`* to make it effective  
+  
+- Environmental configuration for Spark
 
