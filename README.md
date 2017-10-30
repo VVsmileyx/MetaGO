@@ -23,7 +23,7 @@ The figure shows the profile of the computational framework, which includes foll
 The following two figures give the processing pipeline for training and testing of group-specific features. 
 ![](https://github.com/VVsmileyx/GOES/blob/master/figure2.jpg) ![](https://github.com/VVsmileyx/GOES/blob/master/figure3.jpg)  
 Apache Spark is a fast big data analytics engine on MapReduce framework and Hadoop Distributed File System (HDFS) [31]. In parallel programming, Spark supplies Resilient Distributed Datasets (RDDs) and parallel operations on datasets. RDD enables programmers perform in-memory computations on large clusters. The map and reduce RDD frame works is shown in the following figure.  
-![]()
+![](https://github.com/VVsmileyx/GOES/blob/master/figure4.jpg)
   
 ## The installing and running manual of GOES
 ### Package installation and environment configuration  
