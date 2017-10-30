@@ -67,7 +67,7 @@ Example：The input file is Filelist.txt
 `…`  
 `/home/…/P25.fasta`  
   
-### 2.command line  
+#### 2.command line  
 - The main running command is *`$ bash GOES.sh`* with following options:  
   
    -I, --inputData: The type of input data, you can only choose 'RAW' or 'MATRIX'.  
@@ -95,7 +95,7 @@ Example：The input file is Filelist.txt
 (2)*`$ bash-3.2$ bash test.sh –F fileList.txt –N 25 –M 25 –K 10 –m 1 –T 0.01 –C 0.01 –W TK –O /home/usr/GOES/ -S –U –Z`*  
 (The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. The filter function is T-test and chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering high-sparse features and all saved files are perserved in /home/usr/GOES/ )  
   
-#### 2.Output files  
+#### 3.Output files  
 - (1) The group-specific k-mer features  
   
 - Description  
@@ -193,4 +193,4 @@ AUC_filter_down/part-xxx:
      
 ## The demo of GOES on testing dataset  
 
-`
+
