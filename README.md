@@ -39,5 +39,17 @@ You need set the dsk and sratoolkit path to environment variables, you can use t
 	   
 then use command *`$ source ~/.bashrc`* to make it effective  
   
-- Environmental configuration for Spark
-
+- Environmental configuration for Spark  
+  
+  The detail environmental configuration for Spark is [here]()  
+    
+- Installation steps  
+   1.Download the source code to your directory, e.g:`/home/user/GOES/`  
+   2.Enter the directory:*`$ cd /home/user/GOES`*  
+   3.Extract the tar file:*`$ tar -xvf GOES_SourceCode.tar`*  
+   4.Enter the directory:*`$ cd /home/user/GOES/GOES_SourceCode`*  
+     
+### Running of GOES Pipeline  
+  
+#### 1.Input file  
+The input file is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats. All the training samples are list with complete path and the samples belong to same group must arrange together. (e.g. line1 to linek of the list belongs to group 1 and linek+1 to lineN belongs to group 2)
