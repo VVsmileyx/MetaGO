@@ -120,4 +120,77 @@ AUC_filter_down/part-xxx:
 `...`  
   
   WR_filtered_down/part-xxx:  
-  `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  Regress <sn+sp>/2:0.54`
+  `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  Regress <sn+sp>/2:0.54`  
+  
+- (2)Temporary middle results  
+  
+  Including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ separately. If the raw data type is .sra, there would be a temporary file named ‘fastaFile’  
+    
+- Example  
+  
+  *`$ ls G1_tupleFile/*`*  
+    
+  `H1_k_10.txt`  
+  `H2_k_10.txt`  
+  `...`  
+  `H24_k_10.txt`  
+  `H25_k_10.txt`  
+    
+  *`$ less H1_k_10.txt`*  
+    
+   `CTGTCCATGC 1`  
+   `ATCTGCTTAA 1`  
+   `GCAAGATCGC 2`  
+   `...`  
+     
+   *`$ ls Group1splitedFile/*`*  
+     
+   `Group1FileList_1.txt`  
+   `Group1FileList_2.txt`  
+   `...`  
+   `Group1FileList_7.txt`
+   `H1_k_10_1.txt`  
+   `H1_k_10_2.txt`  
+   `...`  
+   `H1_k_10_7.txt`  
+   `H2_k_10_1.txt`  
+   `H2_k_10_2.txt`  
+   `...`  
+   `H2_k_10_7.txt`  
+   `...`  
+   `H25_k_10_1.txt`  
+   `H25_k_10_2.txt`  
+   `...`  
+   `H25_k_10_7.txt`  
+     
+   *`$ less H1_k_10_1.txt`*
+     
+    `CTGTCCATGC 1`  
+    `ATCTGCTTAA 1`  
+    `GCAAGATCGC 2`  
+    `...`  
+      
+   If the raw data are .sra files, another temporary middle dictionary named fastaFile will be generated.
+      
+   *`$ ls fastaFile/*`*  
+      
+   `H1.fasta.gz`  
+   `H2.fasta.gz`  
+   `...`  
+   `H25.fasta.gz`  
+   `P1.fasta.gz`  
+   `P2.fasta.gz`  
+   `...`  
+   `P25.fasta.gz`  
+      
+   *`$ less H1.fasta.gz`*
+     
+   `>ERR011087.1 I330_1_FC30JM6AAXX:4:1:0:199 length=44`  
+   `TTCANATATGGAAAAACAGGGAGCGGAAATCACGTTACTTGCGT`  
+   `>ERR011087.1 I330_1_FC30JM6AAXX:4:1:0:199 length=44`  
+   `ATCATCGGAAAAGGCAGGCTGTCCATGCTCCAACCGGTTAATGA`
+   `...`  
+     
+## The demo of GOES on testing dataset  
+
+`
