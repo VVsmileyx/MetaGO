@@ -6,7 +6,7 @@
     
   The detail description of GOES’s framework is provided [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-detail-description-of-goess-framework).  
     
-  The installing and running manual of GOES is [here]().  
+  The installing and running manual of GOES is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-installing-and-running-manual-of-goes).  
     
 ## Version Release Notes  
  - Version 1.0  
