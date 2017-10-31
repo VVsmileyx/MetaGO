@@ -21,9 +21,9 @@
 The figure shows the profile of the computational framework, which includes following three modules. 1) Building feature vector of each sample. For each metagenomic sequencing data, the feature vector is composed of the number of occurrence for each k-mer through all the reads. 2) Feature preprocessing. After preprocessing and normalization, the union matrix is integrated on the feature vectors across the training samples. The high-sparse features obviously have no contribution to separate the groups are filtered out. 3) Identify group-specific features. The logical and numerical features are filtered and selected with discriminating power.  
   
 The following two figures give the processing pipeline for training and testing of group-specific features.   
-![](https://github.com/VVsmileyx/GOES/blob/master/Figure2.jpg) ![](https://github.com/VVsmileyx/GOES/blob/master/figure3.jpg) 
+![](https://github.com/VVsmileyx/GOES/blob/master/Figure2.jpg) ![](https://github.com/VVsmileyx/GOES/blob/master/Figure3.jpg) 
 Apache Spark is a fast big data analytics engine on MapReduce framework and Hadoop Distributed File System (HDFS) [31]. In parallel programming, Spark supplies Resilient Distributed Datasets (RDDs) and parallel operations on datasets. RDD enables programmers perform in-memory computations on large clusters. The map and reduce RDD frame works is shown in the following figure.  
-![](https://github.com/VVsmileyx/GOES/blob/master/figure4.jpg)
+![](https://github.com/VVsmileyx/GOES/blob/master/Figure4.jpg)
   
 ## The installing and running manual of GOES
 ### Package installation and environment configuration  
