@@ -214,17 +214,17 @@ AUC_filter_down/part-xxx:
 	   
 	 If you choose AUC-test to filtering,the output files:  
 	   
-	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test ([download]())  
-	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.  
+	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/GOES/blob/master/AUC-test.rar))  
+	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/GOES/blob/master/WR_filtered_for_aucTest.rar))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
-	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download]())  
-	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download]())  
+	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download](https://github.com/VVsmileyx/GOES/blob/master/chi2_test.rar))  
+	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/GOES/blob/master/WR_filtered_for_chi2_test.rar))  
 	   
 	 Output files for both AUC-test and chi2-test:  
 	   
-	 Output file3: features without any filtering.([download]())  
-	 Output file4: features after removing highly-sparse features.([download]())  
+	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/GOES/blob/master/tuple_union.rar))  
+	 Output file4: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/GOES/blob/master/filter_sparse.rar))  
 	   
-	 Middle temporary files:([download]())
+	 Middle temporary files:([download](https://github.com/VVsmileyx/GOES/blob/master/Middle_temporary_files.rar))
