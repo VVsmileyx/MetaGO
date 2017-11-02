@@ -74,6 +74,11 @@ then use command *`$ source ~/.bashrc`* to make it effective
    -S, --sparse: If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘Chi2_filtered_down’ or ‘Chi2_filtered_down_x ’ or ‘AUC_filtered_down’ or ‘AUC_filtered_down-x’. (x = 1, 2, 3, ... )  
    -Z, --cleanUp: If choose this option, all Intermediate files will be cleaned up, including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
    -h, --help: show the help message.  
+  
+- Attention:  
+  
+  (1) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -Z.  
+  (2) If you choose 'AUC' in option -W, you should not choose -C, and you should not choose -A when you choose 'chi2-test' in option -W.
      
 - Examples:  
 (1)*`$ bash-3.2$ bash GOES.sh –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W AUC –O /home/usr/GOES/ -Z`*  
