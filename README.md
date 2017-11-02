@@ -222,4 +222,9 @@ AUC_filter_down/part-xxx:
 	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download]())  
 	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download]())  
 	   
+	 Output files for both AUC-test and chi2-test:  
+	   
+	 Output file3: features without any filtering.([download]())  
+	 Output file4: features after removing highly-sparse features.([download]())  
+	   
 	 Middle temporary files:([download]())
