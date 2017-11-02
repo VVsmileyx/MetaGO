@@ -194,7 +194,7 @@ AUC_filter_down/part-xxx:
      
 ## The demo of GOES on testing dataset  
 
-- Dataset:25 test healthy samples and 25 patient test samples [download](https://github.com/VVsmileyx/GOES/blob/master/testDATA.rar)  
+- Dataset:25 test healthy samples and 25 patient test samples ([download](https://github.com/VVsmileyx/GOES/blob/master/testDATA.rar))  
 - Running steps:  
 	- Step1: download testData and GOES souce code  
 	- Step2: get the fileList of test data  
@@ -207,5 +207,19 @@ AUC_filter_down/part-xxx:
 	- Step3: run GOES:  
 	  
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 7 -R 0.7 -C 0.7 -X 1 -L 0.5 -W chi2-test -O /home/wangying/fulei/program/testResult3 -U -S -Z `*
-	
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 7 -R 0.7 -A 0.6 -X 1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 7 -R 0.7 -C 0.7 -X 1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
+	  
+	 - Step4: Output files  
+	   
+	 If you choose AUC-test to filtering,the output files:  
+	   
+	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test ([download]())  
+	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.  
+	   
+	 If you choose chi2-test to filtering, the output files:  
+	   
+	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download]())  
+	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download]())  
+	   
+	 Middle temporary files:([download]())
