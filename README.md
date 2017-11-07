@@ -43,7 +43,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 - Environmental configuration for Spark  
   
-  The detail environmental configuration for Spark is [here]()  
+  The detail environmental configuration for Spark is [here](https://github.com/VVsmileyx/GOES/blob/master/Environmental_configuration_of_Spark.docx)  
     
 - Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/GOES/`  
