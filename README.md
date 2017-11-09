@@ -43,7 +43,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 - Environmental configuration for Spark  
   
-  The above result was run on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/GOES/raw/master/Environmental_configuration_of_Spark.docx).You can get imformation about setting cluster mode (click [here](https://spark.apache.org/docs/latest/spark-standalone.html)),but we have not tested the program on this mode.  
+  The above result was run on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/GOES/raw/master/Environmental_configuration_of_Spark.docx).You can get imformation about setting cluster mode [here](https://spark.apache.org/docs/latest/spark-standalone.html),but we have not tested the program on this mode.  
     
 - Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/GOES/`  
