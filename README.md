@@ -1,8 +1,8 @@
 # Welcome to use GOES  
   
-  GOES is a pipeline developed to identify group-specific sequences between two groups of high throughput sequencing samples with long k-mer (generally k=30-40) features. The group-specific here means being present or rich in one group but absent or scarce in another group. GOES is taxonomy-free and only on the frequency of k-mers
+  GOES is a pipeline developed to identify group-specific sequences between two groups of high throughput sequencing samples with long k-mer (generally k=30-40) features. The group-specific here means being present or rich in one group but absent or scarce in another group. GOES is taxonomy-free and only on the frequency of k-mers.
     
-  GOES was developed with Python and implemented on Apache Spark under Unix and Linux platform.  Apache Spark is a high-performance computing architecture to run on HDFS of Hadoop or on a stand-alone multi-core computer in parallel.
+  GOES was developed with Python and implemented on Apache Spark under Unix and Linux platform.  Apache Spark is a high-performance computing architecture to run on HDFS of Hadoop or on a stand-alone multi-core server in parallel.
     
   The detail description of GOES’s framework is provided [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-detail-description-of-goess-framework).  
     
@@ -43,7 +43,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 - Environmental configuration for Spark  
   
-  The detail environmental configuration for Spark is [here](https://github.com/VVsmileyx/GOES/blob/master/Environmental_configuration_of_Spark.docx)  
+  The instruction of environmental configuration for Spark can be download [here](https://github.com/VVsmileyx/GOES/blob/master/Environmental_configuration_of_Spark.docx).  
     
 - Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/GOES/`  
