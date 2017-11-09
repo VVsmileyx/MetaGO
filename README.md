@@ -43,7 +43,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 - Environmental configuration for Spark  
   
-  The instruction of environmental configuration for Spark can be download [here](https://github.com/VVsmileyx/GOES/blob/master/Environmental_configuration_of_Spark.docx).  
+  The above result was run on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/GOES/raw/master/Environmental_configuration_of_Spark.docx).You can get imformation about setting cluster mode (click [here](https://spark.apache.org/docs/latest/spark-standalone.html)),but we have not tested the program on this mode.  
     
 - Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/GOES/`  
@@ -75,7 +75,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
    -Z, --cleanUp: If choose this option, all Intermediate files will be cleaned up, including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
    -h, --help: show the help message.  
   
-- Attention:  
+- Notice:  
   
   (1) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -Z.  
   (2) If you choose 'AUC' in option -W, you should not choose -C, and you should not choose -A when you choose 'chi2-test' in option -W.
