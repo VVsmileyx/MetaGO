@@ -32,7 +32,7 @@ Apache Spark is a fast big data analytics engine on MapReduce framework and Hado
    2.Python 2.7 or above.  
    3. Spark 1.6.2 and later  
    4. DSK 1.6066 ([download](https://github.com/VVsmileyx/GOES/raw/master/dsk-1.6066.tar.gz))  
-   5. sratoolkit.2.8.2-1-ubuntu64 ([download here](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std))  
+   5. sratoolkit.2.8.2-1-ubuntu64 ([download](https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.8.2-1/sratoolkit.2.8.2-1-ubuntu64.tar.gz))  
      
 You need set the dsk and sratoolkit path to environment variables, you can use the following command to set environment variables:  
    
