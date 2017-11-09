@@ -199,7 +199,7 @@ AUC_filter_down/part-xxx:
      
 ## The demo of GOES on testing dataset  
 
-- Dataset:25 test healthy samples and 25 patient test samples ([download](https://github.com/VVsmileyx/GOES/blob/master/testDATA.rar))  
+- Dataset:25 test healthy samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
 - Running steps:  
 	- Step1: download testData and GOES souce code  
 	- Step2: get the fileList of test data  
@@ -219,17 +219,17 @@ AUC_filter_down/part-xxx:
 	   
 	 If you choose AUC-test to filtering,the output files:  
 	   
-	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/GOES/blob/master/AUC-test.rar))  
-	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/GOES/blob/master/WR_filtered_for_aucTest.rar))  
+	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/AUC-test.rar))  
+	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_aucTest.rar))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
-	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download](https://github.com/VVsmileyx/GOES/blob/master/chi2_test.rar))  
-	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/GOES/blob/master/WR_filtered_for_chi2_test.rar))  
+	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_test.rar))  
+	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_chi2_test.rar))  
 	   
 	 Output files for both AUC-test and chi2-test:  
 	   
-	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/GOES/blob/master/tuple_union.rar))  
-	 Output file4: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/GOES/blob/master/filter_sparse.rar))  
+	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/tuple_union.rar))  
+	 Output file4: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/filter_sparse.rar))  
 	   
-	 Middle temporary files:([download](https://github.com/VVsmileyx/GOES/blob/master/Middle_temporary_files.rar))
+	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/Middle_temporary_files.rar))
