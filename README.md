@@ -199,7 +199,7 @@ AUC_filter_down/part-xxx:
      
 ## The demo of GOES on testing dataset  
 
-- Dataset:25 test healthy samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
+- Dataset:25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
 - Running steps:  
 	- Step1: download testData and GOES souce code  
 	- Step2: get the fileList of test data  
