@@ -56,10 +56,10 @@ then use command *`$ source ~/.bashrc`* to make it effective
 ### 3.1 command line  
 - The main running command is *`$ bash GOES.sh`* with following options:  
   
-short option   |  long option  |   description  
- --------- | :-----------:  | :-:   
-  -I |--inputData  |The type of input data, you can only choose 'RAW' or 'MATRIX'. 
-  -F |--fileList   | The input fileList. 
+short option |  long option  |   description  
+  :-----------: | :-----------:  | :----------------:   
+  -I | --inputData  |The type of input data, you can only choose 'RAW' or 'MATRIX'. 
+  -F | --fileList   | The input fileList. 
   -N |--n1    | The number of samples belong to group 1.  
   -M |--n2| The number of samples belong to group 2.  
   -K | --kmer | The length of k-mer as features(we recommend using 30 for relative small sample size ~100; using 40 for larger sample size >100).  
