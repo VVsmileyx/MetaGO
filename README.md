@@ -56,24 +56,26 @@ then use command *`$ source ~/.bashrc`* to make it effective
 ### 3.1 command line  
 - The main running command is *`$ bash GOES.sh`* with following options:  
   
-   -I, --inputData: The type of input data, you can only choose 'RAW' or 'MATRIX'.  
-   -F, --fileList: The input fileList.  
-   -N, --n1: The number of samples belong to group 1.  
-   -M, --n2: The number of samples belong to group 2.  
-   -K, --kmer: The length of k-mer as features(we recommend using 30 for relative small sample size ~100; using 40 for larger sample size >100).  
-   -m, --min: The threshold of minimum k-mer frequency. If the occurrence of one k-mer is smaller than the threshold, the k-mer is removed from the feature vector,the default value is 1.  
-   -P, --Piece: In order to keep smooth running under limited computational resources, the feature vector file for each sequencing file can be split into small segments. You can choose 1, 2, 3, 4, … , the default value is 1.  
-   -R, --SparseThreshold: The threshold of filtering highly-sparse features, the default value is 0.8.  
-   -C, --K2test: The threshold of p-value of chi2-test, the default value is 0.01.  
-   -A, --AUCtest: The threshold of AUC by single-logical-feature predictor. If the obtained AUC is higher than the threshold, the k-mer is identified as group-specific feature. The default value is 0.8.  
-   -X, --WilcoxonTest: The threshold of p-value of Wilcoxon Test, the default value is 0.01.  
-   -L, --LogicalRegress: The threshold of (sn+sp)/2 by single-numerical-feature Logical regression predictor. If the obtained (sn+sp)/2 is higher than the threshold, the k-mer is identified as group-specific feature, the default value is 0.8.  
-   -W, filterFuction: The function of the filter, you can choose 'chi2-test' or 'AUC', default is AUC.  
-   -O, --outputPath: The path of the output files, default is current directory.  
-   -U, --Union: If you choose this option, the initial union matrix files (without any filter ) will be saved and output named ‘tuple-union’ or ‘tuple-union-x’. (x = 1, 2, 3, ... )  
-   -S, --sparse: If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘Chi2_filtered_down’ or ‘Chi2_filtered_down_x ’ or ‘AUC_filtered_down’ or ‘AUC_filtered_down-x’. (x = 1, 2, 3, ... )  
-   -Z, --cleanUp: If choose this option, all Intermediate files will be cleaned up, including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
-   -h, --help: show the help message.  
+short option   |  long option  |  dscrible  
+ --------- | :-----------:  | :-:   
+  -I |--inputData  |The type of input data, you can only choose 'RAW' or 'MATRIX'. 
+  -F |--fileList   | The input fileList. 
+  -N |--n1    | The number of samples belong to group 1.  
+  -M |--n2| The number of samples belong to group 2.  
+  -K | --kmer | The length of k-mer as features(we recommend using 30 for relative small sample size ~100; using 40 for larger sample size >100).  
+  -m | --min | The threshold of minimum k-mer frequency. If the occurrence of one k-mer is smaller than the threshold, the k-mer is removed from the feature vector,the default value is 1.  
+  -P | --Piece | In order to keep smooth running under limited computational resources, the feature vector file for each sequencing file can be split into small segments. You can choose 1, 2, 3, 4, … , the default value is 1.  
+  -R | --SparseThreshold | The threshold of filtering highly-sparse features, the default value is 0.8.  
+  -C |--K2test | The threshold of p-value of chi2-test, the default value is 0.01.  
+  -A | --AUCtest | The threshold of AUC by single-logical-feature predictor. If the obtained AUC is higher than the threshold, the k-mer is identified as group-specific feature. The default value is 0.8.  
+  -X | --WilcoxonTest | The threshold of p-value of Wilcoxon Test, the default value is 0.01.  
+  -L | --LogicalRegress | The threshold of (sn+sp)/2 by single-numerical-feature Logical regression predictor. If the obtained (sn+sp)/2 is higher than the threshold, the k-mer is identified as group-specific feature, the default value is 0.8.  
+  -W | --filterFuction | The function of the filter, you can choose 'chi2-test' or 'AUC', default is AUC.  
+  -O | --outputPath | The path of the output files, default is current directory.  
+  -U | --Union | If you choose this option, the initial union matrix files (without any filter ) will be saved and output named ‘tuple-union’ or ‘tuple-union-x’. (x = 1, 2, 3, ... )  
+  -S | --sparse | If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘Chi2_filtered_down’ or ‘Chi2_filtered_down_x ’ or ‘AUC_filtered_down’ or ‘AUC_filtered_down-x’. (x = 1, 2, 3, ... )  
+  -Z | --cleanUp | If choose this option, all Intermediate files will be cleaned up, including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
+  -h | --help | show the help message.  
   
 - Notice:  
   
