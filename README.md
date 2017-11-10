@@ -77,19 +77,29 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 - Notice:  
   
-  (1) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -Z.  
+  (1) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -Z.Furthermore, the input file(files) must be 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I', and you should remove or change the path of the following folders: 'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
   (2) If you choose 'AUC' in option -W, you should not choose -C, and you should not choose -A when you choose 'chi2-test' in option -W.
      
 #### 3.1.2 Examples:  
-(1)*`$ bash-3.2$ bash GOES.sh –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W AUC –O /home/usr/GOES/ -Z`*  
+##### 3.1.2.1 InputData is the text of the list of sequencing files 
+If the input file you selected is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats(choose 'RAW' in option '-I'), the following examples can be used.  
+(1)*`$ bash-3.2$ bash GOES.sh -I RAW –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W AUC –O /home/usr/GOES/ -Z`*  
 (The input file is Filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is AUC and the threshold of AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
-(2)*`$ bash-3.2$ bash test.sh –F fileList.txt –N 25 –M 25 –K 10 –m 1 –T 0.01 –C 0.01 –W TK –O /home/usr/GOES/ -S –U –Z`*  
+(2)*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 –T 0.01 –C 0.01 –W TK –O /home/usr/GOES/ -S –U –Z`*  
 (The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. The filter function is T-test and chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering high-sparse features and all saved files are perserved in /home/usr/GOES/ )  
   
+#### 3.1.2.2 InputData is matrix  
+If the input file you selected is the matix of union, the following examples can be used.  
+(1)*`$ bash-3.2$ bash GOES.sh -I MATRIX –N 25 –M 25 –P 4 –A 0.8 –X 0.01 –L 0.8 –W AUC –O /home/usr/GOES/ `*  
+(The input file is matrix of union without any filtering in /home/usr/GOES/, which named "tuple_union_1","tuple_union_2","tuple_union_3","tuple_union_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is AUC and the threshold of AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/GOES/)  
 ### 3.2 Input file  
-The input file is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats. All the training samples are list with complete path and the samples belong to same group must arrange together. (e.g. line1 to linek of the list belongs to group 1 and linek+1 to lineN belongs to group 2)  
+#### 3.2.1 InputData is the text of the list of sequencing files  
   
-Example：The input file is Filelist.txt  
+- Description  
+  
+  The input file is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats. All the training samples are list with complete path and the samples belong to same group must arrange together. (e.g. line1 to linek of the list belongs to group 1 and linek+1 to lineN belongs to group 2)  
+  
+- Example：The input file is Filelist.txt  
   
   *`$ cat filelist.txt`*  
   `/home/…/H1.fasta`  
@@ -101,8 +111,21 @@ Example：The input file is Filelist.txt
   `…`  
   `/home/…/P25.fasta`  
   
+#### 3.2.2 InputData is matrix   
+  
+- Description  
+  
+  The input file(files) should be 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'.  
+    
+- Example:  
+tuple_union/part-xxx:  
+  
+  `ACCGTGCGTA      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0`
+  `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+`...`
 ### 3.3 Output files  
-#### 3.3.1 The group-specific k-mer features  
+#### 3.3.1 InputData is the text of the list of sequencing files
+##### 3.3.1.1 The group-specific k-mer features  
   
 - Description  
   
@@ -128,7 +151,7 @@ AUC_filter_down/part-xxx:
   WR_filtered_down/part-xxx:  
   `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  Regress <sn+sp>/2:0.54`  
   
-#### 3.3.2 Temporary middle results  
+##### 3.3.1.2 Temporary middle results  
   
   Including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ separately. If the raw data type is .sra, there would be a temporary file named ‘fastaFile’  
     
@@ -197,11 +220,33 @@ AUC_filter_down/part-xxx:
    `ATCATCGGAAAAGGCAGGCTGTCCATGCTCCAACCGGTTAATGA`
    `...`  
      
+#### 3.3.3 Other results  
+If you running GOES with choosing  '-U' and '-S',you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'(x=1,2,...,n;n is the number you choosed in option '-P') or 'tuple_union' and 'filter_sparse'(n=1)  
+  
+- Example  
+  
+tuple_union/part-xxx:  
+  
+  `ACCGTGCGTA      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0`  
+  `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `...`  
+  
+filter_sparse/part-xxx:  
+  
+  `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `...`  
+  
+#### 3.3.1 InputData is matrix  
+  
+- Description  
+  
+  The output are same with [3.3.1.1]().
 ## 4  The demo of GOES on testing dataset  
 
 ### 4.1 Dataset  
    25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
-### 4.1 Running steps:  
+### 4.2 Running steps:  
+#### 4.2.1 InputData is the text of the list of sequencing files
 - Step1: download testData and GOES souce code  
 - Step2: get the fileList of test data  
 	  
@@ -234,3 +279,36 @@ AUC_filter_down/part-xxx:
 	 Output file4: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/filter_sparse.rar))  
 	   
 	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/Middle_temporary_files.rar))
+  
+#### 4.2.1 InputData is matrix  
+- Notice  
+  
+  The matrix files are the files named 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
+  
+- Step1: run GOES with choosing 'RAW' in option '-I'  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 7 -R 0.7 -A 0.6 -X 1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 7 -R 0.7 -C 0.7 -X 1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
+  
+- Step3: remove or change the path of the following folders:'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.   
+	*`$ rm -r  filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* # remove all folders`*  
+	*`$ mv filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* ../ # move all folders to parent directory`*  
+  
+- Step2: run GOES with choosing 'MATRIX' in option '-I'  
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 7 -R 0.7 -A 0.6 -X 1 -L 0.5 -W AUC -O /home/usr/GOES_Result -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 7 -R 0.7 -C 0.7 -X 1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -S # Filter with chi2-test `*   
+  
+- Step4: Output files  
+  
+	 If you choose AUC-test to filtering,the output files:  
+	   
+	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/AUC-test.rar))  
+	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_aucTest.rar))  
+	   
+	 If you choose chi2-test to filtering, the output files:  
+	   
+	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_test.rar))  
+	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_chi2_test.rar))  
+	   
+	 Output files for both AUC-test and chi2-test:  
+	   
+	 Output file3: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/filter_sparse.rar))  
