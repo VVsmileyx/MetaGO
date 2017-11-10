@@ -56,7 +56,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
 ### 3.1 command line  
 - The main running command is *`$ bash GOES.sh`* with following options:  
   
-short option   |  long option  |  dscrible  
+short option   |  long option  |   description  
  --------- | :-----------:  | :-:   
   -I |--inputData  |The type of input data, you can only choose 'RAW' or 'MATRIX'. 
   -F |--fileList   | The input fileList. 
