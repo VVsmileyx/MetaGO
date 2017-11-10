@@ -16,7 +16,7 @@
 ## Development Team  
   The whole source code was developed by Ying Wang's group, Automation Department, Xiamen University, P.R.China. All the suggestions and questions are welcome to wangying AT xmu.edu.cn.  
    
-## The detail description of GOES’s framework  
+## 1  The detail description of GOES’s framework  
 ![](https://github.com/VVsmileyx/Results-and-figures/blob/master/Figure1.jpg)
 The figure shows the profile of the computational framework, which includes following three modules. 1) Building feature vector of each sample. For each metagenomic sequencing data, the feature vector is composed of the number of occurrence for each k-mer through all the reads. 2) Feature preprocessing. After preprocessing and normalization, the union matrix is integrated on the feature vectors across the training samples. The high-sparse features obviously have no contribution to separate the groups are filtered out. 3) Identify group-specific features. The logical and numerical features are filtered and selected with discriminating power.  
   
@@ -25,9 +25,9 @@ The following two figures give the processing pipeline for training and testing 
 Apache Spark is a fast big data analytics engine on MapReduce framework and Hadoop Distributed File System (HDFS) [31]. In parallel programming, Spark supplies Resilient Distributed Datasets (RDDs) and parallel operations on datasets. RDD enables programmers perform in-memory computations on large clusters. The map and reduce RDD frame works is shown in the following figure.  
 ![](https://github.com/VVsmileyx/Results-and-figures/blob/master/Figure4.jpg)
   
-## The installing and running manual of GOES
-### Package installation and environment configuration  
-- Pre-install running environment  
+## 2  The installing and running manual of GOES
+### 2.1 Package installation and environment configuration  
+#### 2.1.1 Pre-install running environment  
    1.Unix or Linux operating system.  
    2.Python 2.7 or above.  
    3. Spark 1.6.2 and later  
@@ -41,19 +41,19 @@ You need set the dsk and sratoolkit path to environment variables, you can use t
 	   
 then use command *`$ source ~/.bashrc`* to make it effective  
   
-- Environmental configuration for Spark  
+#### 2.1.2 Environmental configuration for Spark  
   
   The above result was run on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/GOES/raw/master/Environmental_configuration_of_Spark.docx).You can get imformation about setting cluster mode [here](https://spark.apache.org/docs/latest/spark-standalone.html),but we have not tested the program on this mode.  
     
-- Installation steps  
+### 2.2 Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/GOES/`  
    2.Enter the directory:*`$ cd /home/user/GOES`*  
    3.Extract the tar file:*`$ tar -xvf GOES_SourceCode.tar`*  
    4.Enter the directory:*`$ cd /home/user/GOES/GOES_SourceCode`*  
      
-### Running of GOES Pipeline  
+## 3  Running of GOES Pipeline  
   
-#### 1.command line  
+### 3.1 command line  
 - The main running command is *`$ bash GOES.sh`* with following options:  
   
    -I, --inputData: The type of input data, you can only choose 'RAW' or 'MATRIX'.  
@@ -80,13 +80,13 @@ then use command *`$ source ~/.bashrc`* to make it effective
   (1) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -Z.  
   (2) If you choose 'AUC' in option -W, you should not choose -C, and you should not choose -A when you choose 'chi2-test' in option -W.
      
-- Examples:  
+#### 3.1.2 Examples:  
 (1)*`$ bash-3.2$ bash GOES.sh –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W AUC –O /home/usr/GOES/ -Z`*  
 (The input file is Filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is AUC and the threshold of AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
 (2)*`$ bash-3.2$ bash test.sh –F fileList.txt –N 25 –M 25 –K 10 –m 1 –T 0.01 –C 0.01 –W TK –O /home/usr/GOES/ -S –U –Z`*  
 (The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. The filter function is T-test and chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering high-sparse features and all saved files are perserved in /home/usr/GOES/ )  
   
-#### 2.Input file  
+### 3.2 Input file  
 The input file is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats. All the training samples are list with complete path and the samples belong to same group must arrange together. (e.g. line1 to linek of the list belongs to group 1 and linek+1 to lineN belongs to group 2)  
   
 Example：The input file is Filelist.txt  
@@ -101,8 +101,8 @@ Example：The input file is Filelist.txt
   `…`  
   `/home/…/P25.fasta`  
   
-#### 3.Output files  
-- (1) The group-specific k-mer features  
+### 3.3 Output files  
+#### 3.3.1 The group-specific k-mer features  
   
 - Description  
   
@@ -128,7 +128,7 @@ AUC_filter_down/part-xxx:
   WR_filtered_down/part-xxx:  
   `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  Regress <sn+sp>/2:0.54`  
   
-- (2)Temporary middle results  
+#### 3.3.2 Temporary middle results  
   
   Including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ separately. If the raw data type is .sra, there would be a temporary file named ‘fastaFile’  
     
@@ -197,10 +197,10 @@ AUC_filter_down/part-xxx:
    `ATCATCGGAAAAGGCAGGCTGTCCATGCTCCAACCGGTTAATGA`
    `...`  
      
-## The demo of GOES on testing dataset  
+## 4  The demo of GOES on testing dataset  
 
 - Dataset:25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
-- Running steps:  
+### 4.1 Running steps:  
 	- Step1: download testData and GOES souce code  
 	- Step2: get the fileList of test data  
 	  
