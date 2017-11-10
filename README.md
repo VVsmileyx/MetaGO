@@ -240,7 +240,7 @@ filter_sparse/part-xxx:
   
 - Description  
   
-  The output are same with [3.3.1.1]().
+  The output are same with [3.3.1.1](https://github.com/VVsmileyx/GOES/blob/master/README.md#3311-the-group-specific-k-mer-features).
 ## 4  The demo of GOES on testing dataset  
 
 ### 4.1 Dataset  
