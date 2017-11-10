@@ -199,23 +199,24 @@ AUC_filter_down/part-xxx:
      
 ## 4  The demo of GOES on testing dataset  
 
-- Dataset:25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
+### 4.1 Dataset  
+   25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
 ### 4.1 Running steps:  
-	- Step1: download testData and GOES souce code  
-	- Step2: get the fileList of test data  
+- Step1: download testData and GOES souce code  
+- Step2: get the fileList of test data  
 	  
 	*`$ cd testData`*  
 	*`$ pwd # get the absolute path of testData, e.g /home/usr/testDATA/`*  
 	*`$ ls /home/usr/testDATA/H*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # /home/usr/GOES/GOES_SoueceCode/ is the absolute path of sorce codes of GOES`*
 	*`$ ls /home/usr/testDATA/P*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # get the fileList of test data`*  
 	  
-	- Step3: run GOES:  
+- Step3: run GOES:  
 	  
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 7 -R 0.7 -A 0.6 -X 1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 7 -R 0.7 -C 0.7 -X 1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
 	  
-	 - Step4: Output files  
+- Step4: Output files  
 	   
 	 If you choose AUC-test to filtering,the output files:  
 	   
