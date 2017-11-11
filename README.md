@@ -282,7 +282,8 @@ filter_sparse/part-xxx:
 	   
 	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/Middle_temporary_files.rar))
   
-#### 4.2.1 InputData is matrix  
+#### 4.2.2 InputData is matrix  
+  
 - Notice  
   
   The matrix files are the files named 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
