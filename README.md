@@ -222,7 +222,7 @@ AUC_filter_down/part-xxx:
    `ATCATCGGAAAAGGCAGGCTGTCCATGCTCCAACCGGTTAATGA`
    `...`  
      
-#### 3.3.3 Other results  
+#### 3.3.1.3 Other results  
 If you running GOES with choosing  '-U' and '-S',you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'(x=1,2,...,n;n is the number you choosed in option '-P') or 'tuple_union' and 'filter_sparse'(n=1)  
   
 - Example  
@@ -238,7 +238,7 @@ filter_sparse/part-xxx:
   `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
   `...`  
   
-#### 3.3.1 InputData is matrix  
+#### 3.3.2 InputData is matrix  
   
 - Description  
   
