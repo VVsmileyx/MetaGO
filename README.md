@@ -223,7 +223,10 @@ AUC_filter_down/part-xxx:
    `...`  
      
 #### 3.3.1.3 Other results  
-If you running GOES with choosing  '-U' and '-S',you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'(x=1,2,...,n;n is the number you choosed in option '-P') or 'tuple_union' and 'filter_sparse'(n=1)  
+  
+- Description  
+  
+  If you running GOES with choosing  '-U' and '-S',you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'(x=1,2,...,n;n is the number you choosed in option '-P') or 'tuple_union' and 'filter_sparse'(n=1)  
   
 - Example  
   
@@ -238,12 +241,25 @@ filter_sparse/part-xxx:
   `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
   `...`  
   
-#### 3.3.2 InputData is matrix  
+#### 3.3.2 InputData is matrix  
+##### 3.3.2.1 The group-specific k-mer features   
+  
+  The output are same with [3.3.1.1](https://github.com/VVsmileyx/GOES/blob/master/README.md#3311-the-group-specific-k-mer-features).  
+  
+##### 3.3.2.2 Other results  
   
 - Description  
   
-  The output are same with [3.3.1.1](https://github.com/VVsmileyx/GOES/blob/master/README.md#3311-the-group-specific-k-mer-features).
-## 4  The demo of GOES on testing dataset  
+  If you running GOES with choosing '-S',you can get the results in the path you choosed in '-O' named 'filter_sparse_x'(x=1,2,...,n;n is the number you choosed in option '-P') or 'filter_sparse'(n=1)  
+  
+- Example  
+  
+  filter_sparse/part-xxx:  
+    
+  `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `...`  
+  
+## 4  The demo of GOES on testing dataset  
 
 ### 4.1 Dataset  
    25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
