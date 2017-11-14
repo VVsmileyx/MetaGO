@@ -79,7 +79,9 @@ short option |  long option  |   description  
   
 - Notice:  
   
-  (1) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -Z.Furthermore, the input file(files) must be 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I', and you should remove or change the path of the following folders: 'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
+  (1) Running this program with large scale of data will cost a lot of time, if you want to change parameter in filtering process(you have to run this whole program once already with choosing option '-U|--Union'), you must obey following rules to save time:  
+  Choose 'MATRIX' in option -I, and you should not choose the following options: -F, -K, -m, -U, -Z.Furthermore, the input file(files) must be 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I', and you should remove or change the path of the following folders: 'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
+    
   (2) If you choose 'AUC' in option -W, you should not choose -C, and you should not choose -A when you choose 'chi2-test' in option -W.
      
 #### 3.1.2 Examples:  
