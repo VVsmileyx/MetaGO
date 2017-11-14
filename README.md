@@ -64,7 +64,7 @@ short option |  long option  |   description  
   -M |--n2| The number of samples belong to group 2.  
   -K | --kmer | The length of k-mer as features(we recommend using 30 for relative small sample size ~100; using 40 for larger sample size >100).  
   -m | --min | The threshold of minimum k-mer frequency. If the occurrence of one k-mer is smaller than the threshold, the k-mer is removed from the feature vector,the default value is 1.  
-  -P | --Piece | In order to keep smooth running under limited computational resources, the feature vector file for each sequencing file can be split into small segments. You can choose 1, 2, 3, 4, … , the default value is 1.  
+  -P | --Piece | In order to keep smooth running under limited computational resources, the feature vector file for each sequencing file can be split into small segments. You can only choose 1, 4, 8 and 16 the default value is 1.When you choose 1, it means that all  sequencing files are not splited. 
   -R | --SparseThreshold | The threshold of filtering highly-sparse features, the default value is 0.8.  
   -C |--K2test | The threshold of p-value of chi2-test, the default value is 0.01.  
   -A | --AUCtest | The threshold of AUC by single-logical-feature predictor. If the obtained AUC is higher than the threshold, the k-mer is identified as group-specific feature. The default value is 0.8.  
