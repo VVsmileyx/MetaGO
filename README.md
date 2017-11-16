@@ -311,8 +311,10 @@ filter_sparse/part-xxx:
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
   
 - Step2: remove or change the path of the following folders:'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.   
-	*`$ rm -r  filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* # remove all folders`*  
+	*`$ cd /home/usr/GOES_Result`*  
+	*`$ rm -r  filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* # remove all folders`*
 	*`$ mv filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* ../ # move all folders to parent directory`*  
+	*`$ cd home/usr/GOES/GOES_SoueceCode`*
   
 - Step3: run GOES with choosing 'MATRIX' in option '-I'  
 	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -R 0.8 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -S # Filter with AUC_test `*  
