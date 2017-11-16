@@ -134,8 +134,9 @@ tuple_union/part-xxx:
   `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
 `...`
 ### 3.3 Output files  
-#### 3.3.1 InputData is the text of the list of sequencing files
-##### 3.3.1.1 The group-specific k-mer features  
+#### 3.3.1 InputData is the text of the list of sequencing files  
+  
+(1) The group-specific k-mer features  
   
 - Description  
   
@@ -161,7 +162,7 @@ AUC_filter_down/part-xxx:
   WR_filtered_down/part-xxx:  
   `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  Regress <sn+sp>/2:0.54`  
   
-##### 3.3.1.2 Temporary middle results  
+(2) Temporary middle results  
   
   Including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ separately. If the raw data type is .sra, there would be a temporary file named ‘fastaFile’  
     
@@ -230,7 +231,7 @@ AUC_filter_down/part-xxx:
    `ATCATCGGAAAAGGCAGGCTGTCCATGCTCCAACCGGTTAATGA`
    `...`  
      
-#### 3.3.1.3 Other results  
+(3) Other results  
   
 - Description  
   
@@ -250,11 +251,11 @@ filter_sparse/part-xxx:
   `...`  
   
 #### 3.3.2 InputData is feature matrix without any filtering  
-##### 3.3.2.1 The group-specific k-mer features   
+(1) The group-specific k-mer features   
   
-  The output are same with [3.3.1.1](https://github.com/VVsmileyx/GOES/blob/master/README.md#3311-the-group-specific-k-mer-features).  
+  The output are same with the group-specific k-mer features wich input is the text of the list of sequencing files.  
   
-##### 3.3.2.2 Other results  
+(2) Other results  
   
 - Description  
   
