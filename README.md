@@ -103,7 +103,7 @@ Each line is the complete path of raw data, such as the first line is '/home/use
 #### 3.1.2.2 InputData is the integrated feature matrix  
 If the input file you selected is the integrated feature matrix (without any filter), the following examples can be used.  
 *`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –U –Z`*  
-The threshold of filtering out highly-sparse features, ASS, p-value is too stringent, so we choose -U to save the feature matrix without any filtering, and that we can adjust the thresholds by using them as input as following command:
+The threshold of filtering out highly-sparse features, ASS, p-value is too stringent, so we choose -U to save the feature matrix without any filtering, and that we can adjust the thresholds by using them as input as following command:  
 *`$ bash-3.2$ bash GOES.sh -I MATRIX –N 25 –M 25 -R 0.8 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ `*  
 (The input file is the feature matrix without any filtering in /home/usr/GOES/, which named "tuple_union_1","tuple_union_2","tuple_union_3","tuple_union_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is ASS and the threshold of filtering highly-sparse features, AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/GOES/)  
   
