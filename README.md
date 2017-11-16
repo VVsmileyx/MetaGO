@@ -83,7 +83,7 @@ short option |  long option  |   description  
     
  (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -Z. And make sure the integrated feature matrix ('tuple_union_x' or 'tuple_union') is in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
     
-  (2) If you choose 'ASS' in option -W, you should not choose -C; IF you use 'chi2-test' in option -W, you should not choose -A.
+  (3) If you choose 'ASS' in option -W, you should not choose -C; IF you use 'chi2-test' in option -W, you should not choose -A.
      
 #### 3.1.2 Examples:  
 ##### 3.1.2.1 InputData is raw data  
