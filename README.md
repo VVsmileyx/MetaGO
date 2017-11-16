@@ -89,8 +89,8 @@ short option |  long option  |   description  
 If the input file you selected is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats(choose 'RAW' in option '-I'), the following examples can be used.  
 (1)*`$ bash-3.2$ bash GOES.sh -I RAW –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W AUC –O /home/usr/GOES/ -Z`*  
 (The input file is Filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is AUC and the threshold of AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
-(2)*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 –T 0.01 –C 0.01 –W TK –O /home/usr/GOES/ -S –U –Z`*  
-(The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. The filter function is T-test and chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering high-sparse features and all saved files are perserved in /home/usr/GOES/ )  
+(2)*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 –T 0.01 –C 0.01 –W chi2-test –O /home/usr/GOES/ -S –U –Z`*  
+(The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. All tuple files are split into 4 slices.The filter function is chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering high-sparse features and all saved files are perserved in /home/usr/GOES/ )  
   
 #### 3.1.2.2 InputData is matrix  
 If the input file you selected is the matix of union, the following examples can be used.  
