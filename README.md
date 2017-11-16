@@ -63,7 +63,7 @@ short option |  long option  |   description  
   -N |--n1    | The number of samples belong to group 1.  
   -M |--n2| The number of samples belong to group 2.  
   -K | --kmer | The length of k-mer as features(For the total number of training samples is about 100 or fewer, we recommend using 30; For the number of training sample is bigger than 100 or more, we recommend 40. The default value is 40 ).  
-  -m | --min | The threshold of minimum k-mer frequency. If the occurrence of one k-mer is smaller than the threshold, the k-mer is removed from the feature vector,the default value is 1, which means the k-mer occurring once will be removed.  
+  -m | --min | The threshold of minimum k-mer frequency. If the occurrence of one k-mer is smaller than the threshold, the k-mer is removed from the feature vector,the default value is 2, which means the k-mer occurring once will be removed.  
   -P | --Piece | In order to keep smooth running under limited computational resources, the feature vector file for each sequencing file can be split into small segments. The options are 1, 4, 8 and 16 and the default value is 1.The option 1 means that all  sequencing files are not splited. 
   -R | --SparseThreshold | The threshold of filtering out highly-sparse features, the default value is 0.8.  
   -C |--K2test | Chi-square test is applied as metrics to select the group-specific k-mers for logical features. The threshold of p-value of chi2-test, the default value is 0.01.  
