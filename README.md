@@ -272,13 +272,13 @@ filter_sparse/part-xxx:
 	  
 	*`$ cd testData`*  
 	*`$ pwd # get the absolute path of testData, e.g /home/usr/testDATA/`*  
-	*`$ ls /home/usr/testDATA/H*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # /home/usr/GOES/GOES_SoueceCode/ is the absolute path of sorce codes of GOES`*
+	*`$ ls /home/usr/testDATA/H*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # /home/usr/GOES/GOES_SoueceCode/ is the absolute path of sorce codes of GOES`*  
 	*`$ ls /home/usr/testDATA/P*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # get the fileList of test data`*  
 	  
 - Step3: run GOES:  
 	  
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
 	  
 - Step4: Output files  
@@ -286,12 +286,12 @@ filter_sparse/part-xxx:
 	 If you choose AUC-test to filtering,the output files:  
 	   
 	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/AUC-test.rar))  
-	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_aucTest.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_aucTest.rar))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
-	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_test.rar))  
-	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_chi2_test.rar))  
+	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_test.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_chi2_test.rar))  
 	   
 	 Output files for both AUC-test and chi2-test:  
 	   
@@ -307,7 +307,7 @@ filter_sparse/part-xxx:
   The matrix files are the files named 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
   
 - Step1: run GOES with choosing 'RAW' in option '-I'  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
   
 - Step2: remove or change the path of the following folders:'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.   
@@ -315,7 +315,7 @@ filter_sparse/part-xxx:
 	*`$ mv filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* ../ # move all folders to parent directory`*  
   
 - Step3: run GOES with choosing 'MATRIX' in option '-I'  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -R 0.8 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -R 0.8 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -S # Filter with AUC_test `*  
 	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -R 0.8 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -S # Filter with chi2-test `*   
   
 - Step4: Output files  
@@ -323,12 +323,12 @@ filter_sparse/part-xxx:
 	 If you choose AUC-test to filtering,the output files:  
 	   
 	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/AUC-test.rar))  
-	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_aucTest.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_aucTest.rar))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
-	 Output file1: single logical feature with p-value<=0.7 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_test.rar))  
-	 Output file2: single numerical feature with p-value<=1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_chi2_test.rar))  
+	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_test.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_chi2_test.rar))  
 	   
 	 Output files for both AUC-test and chi2-test:  
 	   
