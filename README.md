@@ -1,4 +1,4 @@
-# Welcome to use GOES:Identify Group-Specific Sequences 
+# Welcome to use GOES:Identifying Group-Specific Sequences 
   
   GOES is a pipeline developed to identify group-specific sequences between two groups of high throughput sequencing samples with long k-mer (generally k=30-40) features. The group-specific here means being present or rich in one group but absent or scarce in another group. GOES is taxonomy-free and only on the frequency of k-mers.
     
@@ -30,9 +30,9 @@ Apache Spark is a fast big data analytics engine on MapReduce framework and Hado
 #### 2.1.1 Pre-install environments and softwares  
    1.Unix or Linux operating system.  
    2.Python 2.7 or above.  
-   3. Spark 1.6.2 and later  
-   4. DSK 1.6066([download](https://github.com/VVsmileyx/Tools/raw/master/dsk-1.6066.tar.gz)) for counting k-mers  
-   5. sratoolkit.2.8.2-1-ubuntu64 ([download](https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.8.2-1/sratoolkit.2.8.2-1-ubuntu64.tar.gz)) for convert SRA to fa.gz when the sequencing file is SRA format  
+   3. Spark 1.6.2 and later.  
+   4. DSK 1.6066([download](https://github.com/VVsmileyx/Tools/raw/master/dsk-1.6066.tar.gz)) for counting k-mers.  
+   5. sratoolkit.2.8.2-1-ubuntu64 ([download](https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.8.2-1/sratoolkit.2.8.2-1-ubuntu64.tar.gz)) for convert SRA to fa.gz when the sequencing file is SRA format.  
      
 The dsk and sratoolkit paths are added to the environment variables for easy running with the following commands:  
    
@@ -43,7 +43,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 #### 2.1.2 Environmental configurations for Spark  
   
-  Our codes are tested on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/GOES/raw/master/Environmental_configuration_of_Spark.docx).For running on the cluster mode of HDFS of Hadoop, the configuration instruction can be found [here](https://spark.apache.org/docs/latest/spark-standalone.html),but we have not tested the program on this mode.  
+  Our codes are tested on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/GOES/raw/master/Environmental_configuration_of_Spark.docx).For running on the cluster mode of HDFS of Hadoop, the configuration instruction can be found [here](https://spark.apache.org/docs/latest/spark-standalone.html), but we have not tested the program on this mode.  
     
 ### 2.2 Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/GOES/`  
@@ -58,23 +58,23 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 short option |  long option  |   description  
   :-----------: | :-----------:  | :----------------:   
-  -I | --inputData  |The type of input data, you can only choose 'RAW' or 'MATRIX'.'RAW' means the input file format is 'SRA, fasta, fastq, fa.gz, fq.gz', 'MATRIX' means the input is the feature matrix without any filtering.   
-  -F | --fileList   | The input fileList  when the input option is 'RAW'. 
-  -N |--n1    | The number of samples belong to group 1.  
-  -M |--n2| The number of samples belong to group 2.  
+  -I | --inputData  |The type of input data, you can only choose 'RAW' or 'MATRIX'.'RAW' means the input file format is 'SRA, fasta, fastq, fa.gz, fq.gz', 'MATRIX' means the input file is the feature matrix without any filtering.   
+  -F | --fileList   | The input fileList when the input option is 'RAW'. 
+  -N | --n1   | The number of samples belong to group 1.  
+  -M | --n2   | The number of samples belong to group 2.  
   -K | --kmer | The length of k-mer as features(For the total number of training samples is about 100 or fewer, we recommend using 30; For the number of training sample is bigger than 100 or more, we recommend 40. The default value is 40 ).  
-  -m | --min | The threshold of minimum k-mer frequency. If the occurrence of one k-mer is smaller than the threshold, the k-mer is removed from the feature vector,the default value is 2, which means the k-mer occurring once will be removed.  
+  -m | --min  | The threshold of minimum k-mer frequency. If the occurrence of one k-mer is smaller than the threshold, the k-mer is removed from the feature vector,the default value is 2, which means the k-mer occurring once will be removed.  
   -P | --Piece | In order to keep smooth running under limited computational resources, the feature vector file for each sequencing file can be split into small segments. The options are 1, 4, 8 and 16 and the default value is 1.The option 1 means that all  sequencing files are not splited. 
   -R | --SparseThreshold | The threshold of filtering out highly-sparse features, the default value is 0.8.  
-  -C |--K2test | Chi-square test is applied as metrics to select the group-specific k-mers for logical features. The threshold of p-value of chi2-test, the default value is 0.01.  
-  -A | --ASS | The ASS(average of sensitivity and specificity) of Single-logical-feature predictor is applied as metrics to select the group-specific k-mers for logical features. The threshold of ASS by single-logical-feature predictor. If the obtained AUC is higher than the threshold, the k-mer is identified as group-specific feature. The default value is 0.8.  
+  -C |--K2test | Chi-square test is applied as metrics to select the group-specific k-mers for logical features. The threshold of p-value of chi2-test. The default value is 0.01.  
+  -A | --ASS | The ASS(average of sensitivity and specificity) of Single-logical-feature predictor is applied as metrics to select the group-specific k-mers for logical features. The threshold of ASS by single-logical-feature predictor. If the obtained ASS is higher than the threshold, the k-mer is identified as group-specific feature. The default value is 0.8.  
   -X | --WilcoxonTest | The threshold of p-value of Wilcoxon Test for selecting the numerical features. The default value is 0.01.  
   -L | --LogicalRegress | The threshold of ASS(average of sensitivity and specificity) for selecting group-specific numerical k-mers by single-numerical-feature Logical regression predictor. If the obtained ASS is higher than the threshold, the k-mer is identified as group-specific feature, the default value is 0.8.  
   -W | --filterFuction | The function of the filter, you can choose 'chi2-test' or 'ASS', default is ASS.  
   -O | --outputPath | The path of the output files, default is current directory.  
   -U | --Union | If you choose this option, the integrated feature matrix (without any filter ) will be saved and output named ‘tuple-union’ or ‘tuple-union-x’. (x = 1, 2, 3, ... )  
   -S | --sparse | If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘Chi2_filtered_down’ or ‘Chi2_filtered_down_x ’ or ‘AUC_filtered_down’ or ‘AUC_filtered_down-x’. (x = 1, 2, 3, ... ) The filtered matrix can be the input of GOES.sh as '-I MATRIX' when it is required to adjust the threshold of group-specific selections.    
-  -Z | --cleanUp | If choose this option, the temporary files produced during the running will be cleaned up, and only output the selected group-specific k-mers including tuple files, splited files, which have been named as ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
+  -Z | --cleanUp | If choose this option, the temporary files produced during the running will be cleaned up, and only output the selected group-specific k-mers. The temporary files includ tuple files, splited files, which have been named as ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
   -h | --help | show the help message.  
   
 - Notice:  
@@ -87,20 +87,25 @@ short option |  long option  |   description  
 #### 3.1.2 Examples:  
 ##### 3.1.2.1 InputData is raw data  
 If the input file you selected is the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats(choose 'RAW' in option '-I'), the following examples can be used.  
+  
 (1)*`$ bash-3.2$ bash GOES.sh -I RAW –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 -R 0.8 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ -Z`*  
-(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The threshold of filtering out high-sparse features is 0.8. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.8, 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
+(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The threshold of filtering out highly-sparse features is 0.8. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.8, 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
+  
+The Filelist.txt must obey the following rules:  
+Each line is the complete path of raw data, such as the first line is '/home/user/GOES/testData/H1.fasta', and the second line is '/home/user/GOES/testData/H2.fasta' ... Furthermore, and the samples belong to same group must arrange togther(e.g. line1 to linek of the list belongs to group 1 (health) and linek+1 to lineN belongs to group 2 (patient) ).  
+  
 (2)*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.8 –T 0.01 –C 0.01 –W chi2-test –O /home/usr/GOES/ -S –U –Z`*  
-(The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. All tuple files are split into 4 slices. The threshold of filtering out high-sparse features is 0.8. The filter function is chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering high-sparse features and all saved files are perserved in /home/usr/GOES/ )  
+(The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. All tuple files are split into 4 slices. The threshold of filtering out highly-sparse features is 0.8. The filter function is chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering highly-sparse features and all saved files are perserved in /home/usr/GOES/ )  
   
-(3)*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –U –Z`*  
-(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The threshold of filtering out high-sparse features is 0.9. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.9, 0.1 and 0.8 separately. All Intermediate files are not saved. The threshold of filtering out high-sparse features, ASS, p-value is too stringent, so we choose -U to save the feature matrix without any filtering, and that we can adjust the thresholds by using them as input. All the outputs are preserved in /home/usr/GOES/ )
+(3)*`$ bash-3.2$ bash test.sh -I RAW –F Filelist.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –U –Z`*  
+(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The threshold of filtering out highly-sparse features is 0.9. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.9, 0.1 and 0.8 separately. All Intermediate files are not saved. The threshold of filtering out highly-sparse features, ASS, p-value is too stringent, so we choose -U to save the feature matrix without any filtering, and that we can adjust the thresholds by using them as input. All the outputs are preserved in /home/usr/GOES/ )
   
-#### 3.1.2.2 InputData is feature matrix without any filtering  
-If the input file you selected is the feature matrix without any filtering, the following examples can be used.  
+#### 3.1.2.2 InputData is the integrated feature matrix  
+If the input file you selected is the integrated feature matrix (without any filter), the following examples can be used.  
 *`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –U –Z`*  
-The threshold of filtering out high-sparse features, ASS, p-value is too stringent, so we choose -U to save the feature matrix without any filtering, and that we can adjust the thresholds by using them as input as following command:
+The threshold of filtering out highly-sparse features, ASS, p-value is too stringent, so we choose -U to save the feature matrix without any filtering, and that we can adjust the thresholds by using them as input as following command:
 *`$ bash-3.2$ bash GOES.sh -I MATRIX –N 25 –M 25 -R 0.8 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ `*  
-(The input file is the feature matrix without any filtering in /home/usr/GOES/, which named "tuple_union_1","tuple_union_2","tuple_union_3","tuple_union_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is ASS and the threshold of filtering high-sparse features, AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/GOES/)  
+(The input file is the feature matrix without any filtering in /home/usr/GOES/, which named "tuple_union_1","tuple_union_2","tuple_union_3","tuple_union_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is ASS and the threshold of filtering highly-sparse features, AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/GOES/)  
   
 ### 3.2 Input file  
 #### 3.2.1 InputData is the text of the list of sequencing files  
@@ -121,7 +126,7 @@ The threshold of filtering out high-sparse features, ASS, p-value is too stringe
   `…`  
   `/home/…/P25.fasta`  
   
-#### 3.2.2 InputData is matrix   
+#### 3.2.2 InputData is the integrated feature matrix   
   
 - Description  
   
@@ -250,7 +255,7 @@ filter_sparse/part-xxx:
   `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
   `...`  
   
-#### 3.3.2 InputData is feature matrix without any filtering  
+#### 3.3.2 InputData is the integrated feature matrix  
 (1) The group-specific k-mer features   
   
   The output are same with the group-specific k-mer features wich input is the text of the list of sequencing files.  
