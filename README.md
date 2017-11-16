@@ -109,7 +109,7 @@ The threshold of filtering out highly-sparse features, ASS, p-value is too strin
 (The input file is the feature matrix without any filtering in /home/usr/GOES/, which named "tuple_union_1","tuple_union_2","tuple_union_3","tuple_union_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is ASS and the threshold of filtering highly-sparse features, AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/GOES/)  
   
 ### 3.2 Input file  
-#### 3.2.1 InputData is the text of the list of sequencing files  
+#### 3.2.1 InputData is raw data  
   
 - Description  
   
@@ -140,7 +140,7 @@ tuple_union/part-xxx:
   `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
 `...`
 ### 3.3 Output files  
-#### 3.3.1 InputData is the text of the list of sequencing files  
+#### 3.3.1 InputData is raw data  
   
 (1) The group-specific k-mer features  
   
@@ -279,7 +279,7 @@ filter_sparse/part-xxx:
 ### 4.1 Dataset  
    25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
 ### 4.2 Running steps:  
-#### 4.2.1 InputData is the text of the list of sequencing files
+#### 4.2.1 InputData is raw data
 - Step1: download testData and GOES souce code  
 - Step2: get the fileList of test data  
 	  
@@ -313,7 +313,7 @@ filter_sparse/part-xxx:
 	   
 	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/Middle_temporary_files.rar))
   
-#### 4.2.2 InputData is feature matrix without any filtering  
+#### 4.2.2 InputData is the integrated feature matrix  
   
 - Notice  
   
