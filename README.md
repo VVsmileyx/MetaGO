@@ -234,13 +234,13 @@ AUC_filter_down/part-xxx:
   
 tuple_union/part-xxx:  
   
-  `ACCGTGCGTA      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0`  
-  `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `ACCGTGCGTA      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       2       0       0       0       0       0       0       0       0       0       0       0`  
+  `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
   `...`  
   
 filter_sparse/part-xxx:  
   
-  `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
   `...`  
   
 #### 3.3.2 InputData is matrix  
@@ -258,7 +258,7 @@ filter_sparse/part-xxx:
   
   filter_sparse/part-xxx:  
     
-  `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
   `...`  
   
 ## 4  The demo of GOES on testing dataset  
@@ -285,20 +285,20 @@ filter_sparse/part-xxx:
 	   
 	 If you choose AUC-test to filtering,the output files:  
 	   
-	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/AUC-test.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_aucTest.rar))  
+	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/AUC_test_RAW.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_AUCtest_RAW.rar))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
-	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_test.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_chi2_test.rar))  
+	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/Chi2_test_RAW.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_Chi2test_RAW.rar))  
 	   
 	 Output files for both AUC-test and chi2-test:  
 	   
-	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/tuple_union.rar))  
-	 Output file4: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/filter_sparse.rar))  
+	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/TupleUnion.rar))  
+	 Output file4: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/filter_sparse_RAW.rar))  
 	   
-	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/Middle_temporary_files.rar))
+	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/Middle_temporary_files.rar))
   
 #### 4.2.2 InputData is matrix  
   
@@ -322,14 +322,14 @@ filter_sparse/part-xxx:
   
 	 If you choose AUC-test to filtering,the output files:  
 	   
-	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/AUC-test.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_aucTest.rar))  
+	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/AUC_test_MATRIX.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_AUCtest_MATRIX.rar))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
-	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_test.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_filtered_for_chi2_test.rar))  
+	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/Chi2_test_MATRIX.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_Chi2test_MATRIX.rar))  
 	   
 	 Output files for both AUC-test and chi2-test:  
 	   
-	 Output file3: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/filter_sparse.rar))  
+	 Output file3: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/filter_sparse_MATRIX.rar))  
