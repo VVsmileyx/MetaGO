@@ -71,8 +71,8 @@ short option |  long option  |   description  
   -L | --LogicalRegress | The threshold of ASS(average of sensitivity and specificity) for selecting group-specific numerical k-mers by single-numerical-feature Logical regression predictor. If the obtained ASS is higher than the threshold, the k-mer is identified as group-specific feature, the default value is 0.8.  
   -W | --filterFuction | The function of the filter, you can choose 'chi2-test' or 'ASS', default is ASS.  
   -O | --outputPath | The path of the output files, default is current directory.  
-  -U | --Union | If you choose this option, the integrated feature matrix (without any filter ) will be saved and output named ‘tuple-union’ or ‘tuple-union-x’(x = 4, 8, 16 ).  
-  -S | --sparse | If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘filter_sparse_x ’(x = 4, 8, 16)  or ‘filter_sparse’. The filtered matrix can be the input of GOES.sh as '-I MATRIX' when it is required to adjust the threshold of group-specific selections.    
+  -U | --Union | If you choose this option, the integrated feature matrix (without any filter ) will be saved and output named ‘tuple-union’ or ‘tuple-union-x’(x = 1,2,...,k, k is the number you choosed in option '-P').  
+  -S | --sparse | If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘filter_sparse_x ’(x = 1,2,...,k, k is the number you choosed in option '-P')  or ‘filter_sparse’. The filtered matrix can be the input of GOES.sh as '-I MATRIX' when it is required to adjust the threshold of group-specific selections.    
   -Z | --cleanUp | If choose this option, the temporary files produced during the running will be cleaned up, and only output the selected group-specific k-mers. The temporary files includ tuple files, splited files, which have been named as ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
   -h | --help | show the help message.  
   
@@ -80,7 +80,7 @@ short option |  long option  |   description  
   
   (1) It takes a few days(60 hours for 250GB fa.gz of 100 samples) to finish the whole running. So the feature matrix after filtering out highly-sparse is output for the following thresholds adjustment of ASS, p-value. So using -S|--sparse to output the feature matrix filtering out the highly-sparse. And then use -I  MATRIX is useful when we set the ASS, p-value too stringent to get group-specific k-mers. So we use the filtered feature matrix as input to select group-specific k-mers with relaxed throsholds.  
     
- (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') is in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'single_logical_feature_x', 'single_numerical_feature'(x=4, 8, 16) or 'single_logical_feature','single_numerical_feature'.  
+ (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') is in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'single_logical_feature_x', 'single_numerical_feature'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'single_logical_feature','single_numerical_feature'.  
     
   (3) If you choose 'ASS' in option -W, you should not choose -C; IF you use 'chi2-test' in option -W, you should not choose -A.
      
@@ -130,7 +130,7 @@ The threshold of filtering out highly-sparse features, ASS, p-value is too strin
   
 - Description  
   
-  The input file should be 'tuple_union_x' ( x=4, 8, 16 ) or 'tuple_union' in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'.  
+  The input file should be 'tuple_union_x' ( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'tuple_union' in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'.  
     
 - Example:  
 tuple_union/part-xxx:  
@@ -144,7 +144,7 @@ tuple_union/part-xxx:
   
 - Description  
   
-  Two folders named “single_logical_feature” and “single_numerical_feature”  or k folders named “single_logical_feature_x” and “single_numerical_feature_x”  (k is The number of pieces of every sliced tuple file and x=1,2,...,k) in the dictionary that the user assigned, every folder contain a number of filers named “part-xxx” and them saved the union matrix that after all filtering.  
+  Two folders named “single_logical_feature” and “single_numerical_feature”  or k folders named “single_logical_feature_x” and “single_numerical_feature_x”  (x=1, 2, ..., k, k is The number you choosed in option '-P') in the dictionary that the user assigned, every folder contain a number of filers named “part-xxx” and them saved the union matrix that after all filtering.  
     
 - Example:  
 If you choose ‘ASS’ function to filter,the result will be like this:  
@@ -239,7 +239,7 @@ single_logical_feature/part-xxx:
   
 - Description  
   
-  If you running GOES with choosing  '-U' and '-S' and choosing RAW in option -I, you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'( x=1, 2, ... n; 4, 8, 16 ) or 'tuple_union' and 'filter_sparse'.If you choose MATRIX in option -I, and choose '-S', you can get 'filter_sparse_x'( x=4, 8, 16 ) or 'filter_sparse'.  
+  If you running GOES with choosing  '-U' and '-S' and choosing RAW in option -I, you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'tuple_union' and 'filter_sparse'.If you choose MATRIX in option -I, and choose '-S', you can get 'filter_sparse_x'( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'filter_sparse'.  
   
 - Example  
   
@@ -297,13 +297,13 @@ filter_sparse/part-xxx:
   
 - Notice  
   
-  The matrix files are the files named 'tuple_union_x' (x=4, 8, 16 ) or 'tuple_union' in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','single_logical_feature_x','single_numerical_feature_x'(x=4, 8, 16 ) or 'filter_sparse','single_logical_feature','single_numerical_feature'   
+  The matrix files are the files named 'tuple_union_x' (x = 1,2,...,k, k is the number you choosed in option '-P') or 'tuple_union' in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','single_logical_feature_x','single_numerical_feature_x'(x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'filter_sparse','single_logical_feature','single_numerical_feature'   
   
 - Step1: run GOES with choosing 'RAW' in option '-I'  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
   
-- Step2: remove or change the path of the following folders:'filter_sparse_x','single_logical_feature_x','single_numerical_feature_x'(x=4, 8, 16) or 'filter_sparse','single_logical_feature','single_numerical_feature'.  
+- Step2: remove or change the path of the following folders:'filter_sparse_x','single_logical_feature_x','single_numerical_feature_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'filter_sparse','single_logical_feature','single_numerical_feature'.  
 	*`$ cd /home/usr/GOES_Result`*  
 	*`$ rm -r  filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* # remove all folders`*  
 	*`$ mv filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* ../ # move all folders to parent directory`*  
