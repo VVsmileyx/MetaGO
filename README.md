@@ -172,7 +172,7 @@ ASS_filtered_down/part-xxx:
     
 - Example  
   
-  *`$ ls G1_tupleFile/*`*  
+  *`$ ls G1_tupleFile/`*  
     
   `H1_k_10.txt`  
   `H2_k_10.txt`  
@@ -187,7 +187,7 @@ ASS_filtered_down/part-xxx:
    `GCAAGATCGC 2`  
    `...`  
      
-   *`$ ls Group1splitedFile/*`*  
+   *`$ ls Group1splitedFile/`*  
      
    `Group1FileList_1.txt`  
    `Group1FileList_2.txt`  
@@ -216,7 +216,7 @@ ASS_filtered_down/part-xxx:
       
    If the raw data are .sra files, another temporary middle dictionary named fastaFile will be generated.
       
-   *`$ ls fastaFile/*`*  
+   *`$ ls fastaFile/`*  
       
    `H1.fasta.gz`  
    `H2.fasta.gz`  
