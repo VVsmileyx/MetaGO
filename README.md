@@ -58,22 +58,21 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 short option |  long option  |   description  
   :-----------: | :-----------:  | :----------------:   
-  -I | --inputData  |The type of input data, you can only choose 'RAW' or 'MATRIX'.'RAW' means the input file format is 'SRA, fasta, fastq, fa.gz, fq.gz', 'MATRIX' means the input file is the feature matrix without any filtering.   
+  -I | --inputData  |The type of input data, you can only choose 'RAW' or 'MATRIX'.'RAW' means the input file format is 'SRA, fasta, fastq, fa.gz, fq.gz', 'MATRIX' means the input file is  the feature matrix after filtering out highly-sparse.   
   -F | --fileList   | The input fileList when the input option is 'RAW'. 
   -N | --n1   | The number of samples belong to group 1.  
   -M | --n2   | The number of samples belong to group 2.  
   -K | --kmer | The length of k-mer as features(For the total number of training samples is about 100 or fewer, we recommend using 30; For the number of training sample is bigger than 100 or more, we recommend 40. The default value is 40 ).  
   -m | --min  | The threshold of minimum k-mer frequency. If the occurrence of one k-mer is smaller than the threshold, the k-mer is removed from the feature vector,the default value is 2, which means the k-mer occurring once will be removed.  
-  -P | --Piece | In order to keep smooth running under limited computational resources, the feature vector file for each sequencing file can be split into small segments. The options are 1, 4, 8 and 16 and the default value is 1.The option 1 means that all  sequencing files are not splited. 
-  -R | --SparseThreshold | The threshold of filtering out highly-sparse features, the default value is 0.8.  
+  -P | --Piece | In order to keep smooth running under limited computational resources, the feature vector file for each sequencing file can be split into small segments. The options are 1, 4, 8 and 16 and the default value is 1.The option 1 means that all  sequencing files are not splited.  
   -C |--K2test | Chi-square test is applied as metrics to select the group-specific k-mers for logical features. The threshold of p-value of chi2-test. The default value is 0.01.  
   -A | --ASS | The ASS(average of sensitivity and specificity) of Single-logical-feature predictor is applied as metrics to select the group-specific k-mers for logical features. The threshold of ASS by single-logical-feature predictor. If the obtained ASS is higher than the threshold, the k-mer is identified as group-specific feature. The default value is 0.8.  
   -X | --WilcoxonTest | The threshold of p-value of Wilcoxon Test for selecting the numerical features. The default value is 0.01.  
   -L | --LogicalRegress | The threshold of ASS(average of sensitivity and specificity) for selecting group-specific numerical k-mers by single-numerical-feature Logical regression predictor. If the obtained ASS is higher than the threshold, the k-mer is identified as group-specific feature, the default value is 0.8.  
   -W | --filterFuction | The function of the filter, you can choose 'chi2-test' or 'ASS', default is ASS.  
   -O | --outputPath | The path of the output files, default is current directory.  
-  -U | --Union | If you choose this option, the integrated feature matrix (without any filter ) will be saved and output named ‘tuple-union’ or ‘tuple-union-x’. (x = 1, 2, 3, ... )  
-  -S | --sparse | If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘Chi2_filtered_down’ or ‘Chi2_filtered_down_x ’ or ‘AUC_filtered_down’ or ‘AUC_filtered_down-x’. (x = 1, 2, 3, ... ) The filtered matrix can be the input of GOES.sh as '-I MATRIX' when it is required to adjust the threshold of group-specific selections.    
+  -U | --Union | If you choose this option, the integrated feature matrix (without any filter ) will be saved and output named ‘tuple-union’ or ‘tuple-union-x’(x = 4, 8, 16 ).  
+  -S | --sparse | If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘filter_sparse_x ’(x = 4, 8, 16)  or ‘filter_sparse’. The filtered matrix can be the input of GOES.sh as '-I MATRIX' when it is required to adjust the threshold of group-specific selections.    
   -Z | --cleanUp | If choose this option, the temporary files produced during the running will be cleaned up, and only output the selected group-specific k-mers. The temporary files includ tuple files, splited files, which have been named as ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
   -h | --help | show the help message.  
   
