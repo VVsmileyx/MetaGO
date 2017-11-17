@@ -88,24 +88,24 @@ short option |  long option  |   description  
 ##### 3.1.2.1 InputData is raw data  
 If the input file you selected is the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats(choose 'RAW' in option '-I'), the following examples can be used.  
   
-(1)*`$ bash-3.2$ bash GOES.sh -I RAW –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 -R 0.8 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ -Z`*  
-(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The threshold of filtering out highly-sparse features is 0.8. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.8, 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
+(1)*`$ bash-3.2$ bash GOES.sh -I RAW –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ -Z`*  
+(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.8, 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
   
 The Filelist.txt must obey the following rules:  
 Each line is the complete path of raw data, such as the first line is '/home/user/GOES/testData/H1.fasta', and the second line is '/home/user/GOES/testData/H2.fasta' ... Furthermore, and the samples belong to same group must arrange togther(e.g. line1 to linek of the list belongs to group 1 (health) and linek+1 to lineN belongs to group 2 (patient) ).  
   
-(2)*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.8 –T 0.01 –C 0.01 –W chi2-test –O /home/usr/GOES/ -S –U –Z`*  
-(The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. All tuple files are split into 4 slices. The threshold of filtering out highly-sparse features is 0.8. The filter function is chi2-test and don’t save any Intermediate files but save the union matrix files that without any filtering and save the union matrix files that after filtering highly-sparse features and all saved files are perserved in /home/usr/GOES/ )  
+(2)*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 –T 0.01 –C 0.01 –W chi2-test –O /home/usr/GOES/ -S –U –Z`*  
+(The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. All tuple files are split into 4 slices. The filter function is chi2-test and don’t save any Intermediate files but save the feature matrix that without any filter and save the feature matrix after filtering out highly-sparse features and all saved files are perserved in /home/usr/GOES/ )  
   
-(3)*`$ bash-3.2$ bash test.sh -I RAW –F Filelist.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –U –Z`*  
-(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The threshold of filtering out highly-sparse features is 0.9. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.9, 0.1 and 0.8 separately. All Intermediate files are not saved. The threshold of filtering out highly-sparse features, ASS, p-value is too stringent, so we choose -U to save the feature matrix without any filtering, and that we can adjust the thresholds by using them as input. All the outputs are preserved in /home/usr/GOES/ )
+(3)*`$ bash-3.2$ bash test.sh -I RAW –F Filelist.txt –N 25 –M 25 –K 10 –m 1 -P 4 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –S –Z`*  
+(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.9, 0.1 and 0.8 separately. All Intermediate files are not saved. The threshold of ASS, p-value is too stringent, so we choose -S to output the feature matrix filtering out highly-sparse features, and that we can adjust the thresholds by using them as input. All the outputs are preserved in /home/usr/GOES/ )
   
-#### 3.1.2.2 InputData is the integrated feature matrix  
-If the input file you selected is the integrated feature matrix (without any filter), the following examples can be used.  
-*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –U –Z`*  
-The threshold of filtering out highly-sparse features, ASS, p-value is too stringent, so we choose -U to save the feature matrix without any filtering, and that we can adjust the thresholds by using them as input as following command:  
-*`$ bash-3.2$ bash GOES.sh -I MATRIX –N 25 –M 25 -R 0.8 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ `*  
-(The input file is the feature matrix without any filtering in /home/usr/GOES/, which named "tuple_union_1","tuple_union_2","tuple_union_3","tuple_union_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is ASS and the threshold of filtering highly-sparse features, AUC-test Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/GOES/)  
+#### 3.1.2.2 InputData is the feature matrix filtering out highly-sparse features  
+If the input file you selected is the feature matrix filtering out highly-sparse features, the following examples can be used.  
+*`$ bash-3.2$ bash test.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –S –Z`*  
+The threshold of filtering out highly-sparse features, ASS, p-value is too stringent, so we choose -S to save the feature matrix filtering out highly-sparse features, and that we can adjust the thresholds by using them as input as following command:  
+*`$ bash-3.2$ bash GOES.sh -I MATRIX –N 25 –M 25 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ `*  
+(The input file is the feature matrix without any filtering in /home/usr/GOES/, which named "filter_sparse_1","filter_sparse_2","filter_sparse_3","filter_sparse_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is ASS and ASS, Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/GOES/)  
   
 ### 3.2 Input file  
 #### 3.2.1 InputData is raw data  
