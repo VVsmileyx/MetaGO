@@ -80,7 +80,7 @@ short option |  long option  |   description  
   
   (1) It takes a few days(60 hours for 250GB fa.gz of 100 samples) to finish the whole running. So the feature matrix after filtering out highly-sparse is output for the following thresholds adjustment of ASS, p-value. So using -S|--sparse to output the feature matrix filtering out the highly-sparse. And then use -I  MATRIX is useful when we set the ASS, p-value too stringent to get group-specific k-mers. So we use the filtered feature matrix as input to select group-specific k-mers with relaxed throsholds.  
     
- (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') is in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'single_logical_feature_x', 'single_numerical_feature'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'single_logical_feature','single_numerical_feature'.  
+ (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') is in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
     
   (3) If you choose 'ASS' in option -W, you should not choose -C; IF you use 'chi2-test' in option -W, you should not choose -A.
      
@@ -144,26 +144,26 @@ tuple_union/part-xxx:
   
 - Description  
   
-  Two folders named “single_logical_feature” and “single_numerical_feature”  or k folders named “single_logical_feature_x” and “single_numerical_feature_x”  (x=1, 2, ..., k, k is The number you choosed in option '-P') in the dictionary that the user assigned, every folder contain a number of filers named “part-xxx” and them saved the union matrix that after all filtering.  
+  Three folders named 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down' or 3*k folders named 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x' (x=1, 2, ..., k, k is The number you choosed in option '-P') in the dictionary that the user assigned, every folder contain a number of filers named “part-xxx” and them saved the union matrix that after all filtering.  
     
 - Example:  
 If you choose ‘ASS’ function to filter,the result will be like this:  
-single_logical_feature/part-xxx:  
+ASS_filtered_down/part-xxx:  
   
   `AGTCGATTGC	1	1	1	1	1	1	1	0	1	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	ASS:0.944	Label:H`  
   `...`  
     
-  single_numerical_feature/part-xxx:  
+  WR_filtered_down/part-xxx:  
       
     `AGAAAATGAA      0.0     0.0     57.6735 0.0     45.5851 0.0     0.0     0.0     91.659  0.0     0.0     0.0     0.0     45.608  0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     45.5539 0.0     0.0     0.0     137.0677        45.7917 0.0     0.0     0.0     0.0     0.0     0.0     46.0851 45.7289 0.0     45.5332 0.0     45.5    0.0     45.819  0.0     0.0     0.0     0.0     0.0     91.5583 0.0     ASS:0.56        Wilcoxon_Pvalue:0.455057690499  RegressASS:0.56  Label:P`  
     `...`  
   If you choose ‘chi2-test’ function to filter,the result will be like this:
     
-  single_logical_feature/part-xxx:  
+  Chi2_filtered_downe/part-xxx:  
   `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0	1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1       kp:0.0272003506163`  
 `...`  
   
-  single_numerical_feature/part-xxx:  
+  WR_filtered_down/part-xxx:  
   `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  RegressASS:0.54`  
   
 (2) Temporary middle results  
@@ -297,13 +297,13 @@ filter_sparse/part-xxx:
   
 - Notice  
   
-  The matrix files are the files named 'tuple_union_x' (x = 1,2,...,k, k is the number you choosed in option '-P') or 'tuple_union' in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','single_logical_feature_x','single_numerical_feature_x'(x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'filter_sparse','single_logical_feature','single_numerical_feature'   
+  The matrix files are the files named 'tuple_union_x' (x = 1,2,...,k, k is the number you choosed in option '-P') or 'tuple_union' in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'filter_sparse','ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'  
   
 - Step1: run GOES with choosing 'RAW' in option '-I'  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
   
-- Step2: remove or change the path of the following folders:'filter_sparse_x','single_logical_feature_x','single_numerical_feature_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'filter_sparse','single_logical_feature','single_numerical_feature'.  
+- Step2: remove or change the path of the following folders:'filter_sparse_x','ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'filter_sparse','ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
 	*`$ cd /home/usr/GOES_Result`*  
 	*`$ rm -r  filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* # remove all folders`*  
 	*`$ mv filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* ../ # move all folders to parent directory`*  
