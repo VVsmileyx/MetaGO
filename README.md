@@ -80,7 +80,7 @@ short option |  long option  |   description  
   
   (1) It takes a few days(60 hours for 250GB fa.gz of 100 samples) to finish the whole running. So the feature matrix after filtering out highly-sparse is output for the following thresholds adjustment of ASS, p-value. So using -S|--sparse to output the feature matrix filtering out the highly-sparse. And then use -I  MATRIX is useful when we set the ASS, p-value too stringent to get group-specific k-mers. So we use the filtered feature matrix as input to select group-specific k-mers with relaxed throsholds.  
     
- (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') is in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=4, 8, 16) or 'AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
+ (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') is in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'single_logical_feature_x', 'single_numerical_feature'(x=4, 8, 16) or 'single_logical_feature','single_numerical_feature'.  
     
   (3) If you choose 'ASS' in option -W, you should not choose -C; IF you use 'chi2-test' in option -W, you should not choose -A.
      
@@ -126,11 +126,11 @@ The threshold of filtering out highly-sparse features, ASS, p-value is too strin
   `…`  
   `/home/…/P25.fasta`  
   
-#### 3.2.2 InputData is the integrated feature matrix   
+#### 3.2.2 InputData is the feature matrix filtering out highly-sparse features   
   
 - Description  
   
-  The input file(files) should be 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'.  
+  The input file should be 'tuple_union_x' ( x=4, 8, 16 ) or 'tuple_union' in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'.  
     
 - Example:  
 tuple_union/part-xxx:  
@@ -139,37 +139,36 @@ tuple_union/part-xxx:
   `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
 `...`
 ### 3.3 Output files  
-#### 3.3.1 InputData is raw data  
   
 (1) The group-specific k-mer features  
   
 - Description  
   
-  A folder named “AUC_filter_down” and “WR_filtered_down” or “Chi2_filtered_down” or k folders named “AUC_filter_down_x” and “WR_filtered_down_x” or “Chi2_filter_down_x” and "WR_filtered_down_x" (k is The number of pieces of every sliced tuple file and x=1, 2, 3, ... , k) in the dictionary that the user assigned, every folder contain a number of filers named “part-xxx” and them saved the union matrix that after all filtering.  
+  Two folders named “single_logical_feature” and “single_numerical_feature”  or k folders named “single_logical_feature_x” and “single_numerical_feature_x”  (k is The number of pieces of every sliced tuple file and x=1,2,...,k) in the dictionary that the user assigned, every folder contain a number of filers named “part-xxx” and them saved the union matrix that after all filtering.  
     
 - Example:  
-If you choose ‘AUC’ function to filter,the result will be like this:  
-AUC_filter_down/part-xxx:  
+If you choose ‘ASS’ function to filter,the result will be like this:  
+single_logical_feature/part-xxx:  
   
-  `AGTCGATTGC	1	1	1	1	1	1	1	0	1	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	AUC:0.944	Label:H`  
+  `AGTCGATTGC	1	1	1	1	1	1	1	0	1	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	ASS:0.944	Label:H`  
   `...`  
     
-  WR_filtered_down/part-xxx:  
+  single_numerical_feature/part-xxx:  
       
-    `AGAAAATGAA      0.0     0.0     57.6735 0.0     45.5851 0.0     0.0     0.0     91.659  0.0     0.0     0.0     0.0     45.608  0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     45.5539 0.0     0.0     0.0     137.0677        45.7917 0.0     0.0     0.0     0.0     0.0     0.0     46.0851 45.7289 0.0     45.5332 0.0     45.5    0.0     45.819  0.0     0.0     0.0     0.0     0.0     91.5583 0.0     AUC:0.56        Wilcoxon_Pvalue:0.455057690499  Regress <sn+sp>/2:0.56  Label:P`  
+    `AGAAAATGAA      0.0     0.0     57.6735 0.0     45.5851 0.0     0.0     0.0     91.659  0.0     0.0     0.0     0.0     45.608  0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     45.5539 0.0     0.0     0.0     137.0677        45.7917 0.0     0.0     0.0     0.0     0.0     0.0     46.0851 45.7289 0.0     45.5332 0.0     45.5    0.0     45.819  0.0     0.0     0.0     0.0     0.0     91.5583 0.0     ASS:0.56        Wilcoxon_Pvalue:0.455057690499  RegressASS:0.56  Label:P`  
     `...`  
   If you choose ‘chi2-test’ function to filter,the result will be like this:
     
-  Chi2_filtered_down/part-xxx:  
+  single_logical_feature/part-xxx:  
   `CAAGAACGGC      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0	1       0       0       0       0       0       1       0       0       1       0       0       1       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1       kp:0.0272003506163`  
 `...`  
   
-  WR_filtered_down/part-xxx:  
-  `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  Regress <sn+sp>/2:0.54`  
+  single_numerical_feature/part-xxx:  
+  `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  RegressASS:0.54`  
   
 (2) Temporary middle results  
   
-  Including tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ separately. If the raw data type is .sra, there would be a temporary file named ‘fastaFile’  
+  If you choose RAW in option -I and not choose option '-Z', it will output following temporary middle results: tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ separately. If the raw data type is .sra, there would be a temporary file named ‘fastaFile’  
     
 - Example  
   
@@ -240,7 +239,7 @@ AUC_filter_down/part-xxx:
   
 - Description  
   
-  If you running GOES with choosing  '-U' and '-S',you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'(x=1,2,...,n;n is the number you choosed in option '-P') or 'tuple_union' and 'filter_sparse'(n=1)  
+  If you running GOES with choosing  '-U' and '-S' and choosing RAW in option -I, you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'( x=1, 2, ... n; 4, 8, 16 ) or 'tuple_union' and 'filter_sparse'.If you choose MATRIX in option -I, and choose '-S', you can get 'filter_sparse_x'( x=4, 8, 16 ) or 'filter_sparse'.  
   
 - Example  
   
@@ -252,24 +251,6 @@ tuple_union/part-xxx:
   
 filter_sparse/part-xxx:  
   
-  `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
-  `...`  
-  
-#### 3.3.2 InputData is the integrated feature matrix  
-(1) The group-specific k-mer features   
-  
-  The output are same with the group-specific k-mer features wich input is the text of the list of sequencing files.  
-  
-(2) Other results  
-  
-- Description  
-  
-  If you running GOES with choosing '-S',you can get the results in the path you choosed in '-O' named 'filter_sparse_x'(x=1,2,...,n;n is the number you choosed in option '-P') or 'filter_sparse'(n=1)  
-  
-- Example  
-  
-  filter_sparse/part-xxx:  
-    
   `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
   `...`  
   
@@ -290,60 +271,60 @@ filter_sparse/part-xxx:
 - Step3: run GOES:  
 	  
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.6 -X 0.1 -L 0.5 -W ASS -O /home/usr/GOES_Result -U -S # Filter with ASS `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
 	  
 - Step4: Output files  
 	   
-	 If you choose AUC-test to filtering,the output files:  
+	 If you choose ASS to filtering,the output files:  
 	   
-	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/AUC_test_RAW.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_AUCtest_RAW.rar))  
+	 Output file1: single logical feature with ASS>=0.6. ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/AUC_test_RAW.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_AUCtest_RAW.rar))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
 	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/Chi2_test_RAW.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_Chi2test_RAW.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_Chi2test_RAW.rar))  
 	   
 	 Output files for both AUC-test and chi2-test:  
 	   
 	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/TupleUnion.rar))  
-	 Output file4: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/filter_sparse_RAW.rar))  
+	 Output file4: feature matrix filtering out highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/filter_sparse_RAW.rar))  
 	   
 	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/Middle_temporary_files.rar))
   
-#### 4.2.2 InputData is the integrated feature matrix  
+#### 4.2.2 InputData is the feature matrix filtering out highly-sparse features  
   
 - Notice  
   
-  The matrix files are the files named 'tuple_union_x' (x=1,2,...,n; n is the number in option '-P',and if n=1, the input file's name is 'tuple_union') in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.  
+  The matrix files are the files named 'tuple_union_x' (x=4, 8, 16 ) or 'tuple_union' in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'filter_sparse_x','single_logical_feature_x','single_numerical_feature_x'(x=4, 8, 16 ) or 'filter_sparse','single_logical_feature','single_numerical_feature'   
   
 - Step1: run GOES with choosing 'RAW' in option '-I'  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -R 0.7 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
   
-- Step2: remove or change the path of the following folders:'filter_sparse_x','AUC_filtered_down_x','Chi2_filtered_down_x','WR_filtered_down_x'(x=1,2,...,n; n is the number in option '-P') or 'filter_sparse','AUC_filtered_down','Chi2_filtered_down','WR_filtered_down' if n=1.   
+- Step2: remove or change the path of the following folders:'filter_sparse_x','single_logical_feature_x','single_numerical_feature_x'(x=4, 8, 16) or 'filter_sparse','single_logical_feature','single_numerical_feature'.  
 	*`$ cd /home/usr/GOES_Result`*  
 	*`$ rm -r  filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* # remove all folders`*  
 	*`$ mv filter_sparse* AUC_filtered_down* Chi2_filtered_down* WR_filtered_down* ../ # move all folders to parent directory`*  
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*
   
 - Step3: run GOES with choosing 'MATRIX' in option '-I'  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -R 0.8 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -S # Filter with AUC_test `*  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -R 0.8 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -S # Filter with chi2-test `*   
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -S # Filter with chi2-test `*   
   
 - Step4: Output files  
   
-	 If you choose AUC-test to filtering,the output files:  
+	 If you choose ASS to filtering,the output files:  
 	   
-	 Output file1: single logical feature with (sensitivity+specificity)/2>=0.6 for AUC-test. ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/AUC_test_MATRIX.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_AUCtest_MATRIX.rar))  
+	 Output file1: single logical feature with ASS>=0.6. ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/AUC_test_MATRIX.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_AUCtest_MATRIX.rar))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
 	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/Chi2_test_MATRIX.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and (sensitivity+specificity)/2>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_Chi2test_MATRIX.rar))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/WR_filtered_with_Chi2test_MATRIX.rar))  
 	   
-	 Output files for both AUC-test and chi2-test:  
+	 Output files for both ASS and chi2-test:  
 	   
-	 Output file3: features after removing highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/filter_sparse_MATRIX.rar))  
+	 Output file3: features matrix filtering out highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/blob/master/filter_sparse_MATRIX.rar))  
