@@ -310,8 +310,8 @@ filter_sparse/part-xxx:
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*
   
 - Step3: run GOES with choosing 'MATRIX' in option '-I'  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.2 -L 0.5 -W AUC -O /home/usr/GOES_Result -S # Filter with AUC_test `*  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -C 0.2 -X 0.2 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -S # Filter with chi2-test `*   
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.2 -L 0.5 -W AUC -O /home/usr/GOES_Result # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -C 0.2 -X 0.2 -L 0.5 -W chi2-test -O /home/usr/GOES_Result # Filter with chi2-test `*   
   
 - Step4: Output files  
   
