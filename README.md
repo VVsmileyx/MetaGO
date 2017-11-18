@@ -80,7 +80,7 @@ short option |  long option  |   description  
   
   (1) It takes a few days(60 hours for 250GB fa.gz of 100 samples) to finish the whole running. So the feature matrix after filtering out highly-sparse is output for the following thresholds adjustment of ASS, p-value. So using -S|--sparse to output the feature matrix filtering out the highly-sparse. And then use -I  MATRIX is useful when we set the ASS, p-value too stringent to get group-specific k-mers. So we use the filtered feature matrix as input to select group-specific k-mers with relaxed throsholds.  
     
- (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') is in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
+ (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') and the file contanins the number of features of every sequencing file are in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
     
   (3) If you choose 'ASS' in option -W, you should not choose -C; IF you use 'chi2-test' in option -W, you should not choose -A.
      
@@ -166,7 +166,24 @@ ASS_filtered_down/part-xxx:
   WR_filtered_down/part-xxx:  
   `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  RegressASS:0.54`  
   
-(2) Temporary middle results  
+(2) The Number of features in every sequencing files  
+  
+- Description  
+  
+  It will output a file named "TupleNumber.txt" in the path you choosed in option -O, and it saved the number of features in every sequencing files. What's more the file corresponds to fileList.txt which is the text of the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats. 
+  
+- Example  
+  
+  *`$ cat TupleNumber.txt`*  
+  
+  `21860`  
+  `21769`  
+  `17339`  
+  `21908`  
+  `21937`  
+  `...`
+  
+(3) Temporary middle results  
   
   If you choose RAW in option -I and not choose option '-Z', it will output following temporary middle results: tuple files, splited files, named ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ separately. If the raw data type is .sra, there would be a temporary file named ‘fastaFile’  
     
@@ -235,7 +252,7 @@ ASS_filtered_down/part-xxx:
    `ATCATCGGAAAAGGCAGGCTGTCCATGCTCCAACCGGTTAATGA`
    `...`  
      
-(3) Other results  
+(4) Other results  
   
 - Description  
   
