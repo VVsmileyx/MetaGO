@@ -318,7 +318,7 @@ filter_sparse/part-xxx:
   The matrix files are the files named 'filter_sparse_x' (x = 1,2,...,k, k is the number you choosed in option '-P') or 'filter_sparse' in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'  
   
 - Step1: run GOES with choosing 'RAW' in option '-I'  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W AUC -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
   
 - Step2: remove or change the path of the following folders: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
@@ -328,7 +328,7 @@ filter_sparse/part-xxx:
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*
   
 - Step3: run GOES with choosing 'MATRIX' in option '-I'  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.2 -L 0.5 -W AUC -O /home/usr/GOES_Result # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.2 -L 0.5 -W ASS -O /home/usr/GOES_Result # Filter with AUC_test `*  
 	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -C 0.2 -X 0.2 -L 0.5 -W chi2-test -O /home/usr/GOES_Result # Filter with chi2-test `*   
   
 - Step4: Output files  
