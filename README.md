@@ -10,7 +10,7 @@
     
 ## Version Release Notes  
  - Version 1.0  
-   1.This is the first version of GOES pipeline. ([Source code Download](https://github.com/VVsmileyx/GOES/raw/master/GOES_SourceCode.rar))  
+   1.This is the first version of GOES pipeline. ([Source code Download](https://github.com/VVsmileyx/GOES/raw/master/GOES_SourceCode.zip))  
    2.An demo of GOES is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-demo-of-goes-on-testing-dataset).  
      
 ## Development Team  
@@ -295,21 +295,21 @@ filter_sparse/part-xxx:
 	   
 	 If you choose ASS to filtering,the output files:  
 	   
-	 Output file1: single logical feature with ASS>=0.65. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/ASS_Result_RAW.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_Result_ASS_RAW.rar))  
+	 Output file1: single logical feature with ASS>=0.65. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/ASS_Result_RAW.zip))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_Result_ASS_RAW.zip))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
-	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_Result_RAW.rar))  
-	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_Result_chi2_RAW.rar))  
+	 Output file1: single logical feature with p-value<=0.1 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_Result_RAW.zip))  
+	 Output file2: single numerical feature with p-value<=0.1 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_Result_chi2_RAW.zip))  
 	   
 	 Output files for both AUC-test and chi2-test:  
 	   
-	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/TupleUnion_Result.rar))  
-	 Output file4: feature matrix filtering out highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/filter_sparse_Result.rar))  
-	 Output file5: Number of features in every frequencing file.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/TupleNumber.rar))  
+	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/TupleUnion_Result.zip))  
+	 Output file4: feature matrix filtering out highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/filter_sparse_Result.zip))  
+	 Output file5: Number of features in every frequencing file.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/TupleNumber.zip))  
 	   
-	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/Middle_Result.rar))
+	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/Middle_Result.zip))
   
 #### 4.2.2 InputData is the feature matrix filtering out highly-sparse features  
   
@@ -335,11 +335,11 @@ filter_sparse/part-xxx:
   
 	 If you choose ASS to filtering,the output files:  
 	   
-	 Output file1: single logical feature with ASS>=0.6. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/ASS_Result_MATRIX.rar))  
-	 Output file2: single numerical feature with p-value<=0.2 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_Result_ASS_MATRIX.rar))  
+	 Output file1: single logical feature with ASS>=0.6. ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/ASS_Result_MATRIX.zip))  
+	 Output file2: single numerical feature with p-value<=0.2 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_Result_ASS_MATRIX.zip))  
 	   
 	 If you choose chi2-test to filtering, the output files:  
 	   
-	 Output file1: single logical feature with p-value<=0.2 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_Result_MATRIX.rar))  
-	 Output file2: single numerical feature with p-value<=0.2 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_Result_chi2_MATRIX.rar))  
+	 Output file1: single logical feature with p-value<=0.2 for chi2-test ([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/chi2_Result_MATRIX.zip))  
+	 Output file2: single numerical feature with p-value<=0.2 for Wilcoxon sum rank test and ASS>=0.5 for logistic regression.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/WR_Result_chi2_MATRIX.zip))  
 	     
