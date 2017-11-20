@@ -308,7 +308,7 @@ filter_sparse/part-xxx:
 	 Output file3: features without any filtering.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/TupleUnion_Result.rar))  
 	 Output file4: feature matrix filtering out highly-sparse features.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/filter_sparse_Result.rar))  
 	 Output file5: Number of features in every frequencing file.([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/TupleNumber.rar))  
-	   
+	   
 	 Middle temporary files:([download](https://github.com/VVsmileyx/Results-and-figures/raw/master/Middle_Result.rar))
   
 #### 4.2.2 InputData is the feature matrix filtering out highly-sparse features  
