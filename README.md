@@ -274,7 +274,7 @@ filter_sparse/part-xxx:
 ## 4  The demo of GOES on testing dataset  
 
 ### 4.1 Dataset  
-   25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.rar))  
+   25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.zip))  
 ### 4.2 Running steps:  
 #### 4.2.1 InputData is raw data
 - Step1: download testData and GOES souce code  
