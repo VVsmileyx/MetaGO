@@ -48,7 +48,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
 ### 2.2 Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/GOES/`  
    2.Enter the directory:*`$ cd /home/user/GOES`*  
-   3.Extract the tar file:*`$ tar -xvf GOES_SourceCode.tar`*  
+   3.Extract the tar file:*`$ unzip GOES_SourceCode.zip`*  
    4.Enter the directory:*`$ cd /home/user/GOES/GOES_SourceCode`*  
      
 ## 3  Running of GOES Pipeline  
