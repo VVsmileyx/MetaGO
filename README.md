@@ -288,6 +288,7 @@ filter_sparse/part-xxx:
 - Step3: run GOES:  
 	  
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*  
+	*`$ mkdir /home/usr/GOES_Result # creat a folder to save output files`*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/GOES_Result -U -S # Filter with ASS `*  
 	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
 	  
