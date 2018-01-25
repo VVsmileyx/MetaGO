@@ -155,7 +155,7 @@ ASS_filtered_down/part-xxx:
     
   WR_filtered_down/part-xxx:  
       
-    `AGAAAATGAA      0.0     0.0     57.6735 0.0     45.5851 0.0     0.0     0.0     91.659  0.0     0.0     0.0     0.0     45.608  0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     45.5539 0.0     0.0     0.0     137.0677        45.7917 0.0     0.0     0.0     0.0     0.0     0.0     46.0851 45.7289 0.0     45.5332 0.0     45.5    0.0     45.819  0.0     0.0     0.0     0.0     0.0     91.5583 0.0     ASS:0.56        Wilcoxon_Pvalue:0.455057690499  RegressASS:0.56  Label:P`  
+    `AGAAAATGAA      0.0     0.0     57.6735 0.0     45.5851 0.0     0.0     0.0     91.659  0.0     0.0     0.0     0.0     45.608  0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     45.5539 0.0     0.0     0.0     137.0677        45.7917 0.0     0.0     0.0     0.0     0.0     0.0     46.0851 45.7289 0.0     45.5332 0.0     45.5    0.0     45.819  0.0     0.0     0.0     0.0     0.0     91.5583 0.0        Wilcoxon_Pvalue:0.455057690499  Regress_ASS:0.56  Label:P`  
     `...`  
   If you choose ‘chi2-test’ function to filter,the result will be like this:
     
@@ -328,7 +328,7 @@ filter_sparse/part-xxx:
 	*`$ cd home/usr/GOES/GOES_SoueceCode`*
   
 - Step3: run GOES with choosing 'MATRIX' in option '-I'  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.2 -L 0.5 -W ASS -O /home/usr/GOES_Result # Filter with AUC_test `*  
+	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.2 -L 0.5 -W ASS -O /home/usr/GOES_Result # Filter with ASS `*  
 	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -C 0.2 -X 0.2 -L 0.5 -W chi2-test -O /home/usr/GOES_Result # Filter with chi2-test `*   
   
 - Step4: Output files  
