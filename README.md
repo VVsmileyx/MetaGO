@@ -130,13 +130,13 @@ The threshold of filtering out highly-sparse features, ASS, p-value is too strin
   
 - Description  
   
-  The input file should be 'tuple_union_x' ( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'tuple_union' in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'.  
+  The input file should be 'filter_sparse_x' ( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'filter_sparse' in the floder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'.  
     
 - Example:  
-tuple_union/part-xxx:  
+filter_sparse/part-xxx:  
   
-  `ACCGTGCGTA      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       2       0       0       0       0       0       0       0       0       0       0       0`  
-  `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `AAGAAAGCGA      0       0       0       0       0       2       0       0       0       0       1       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       1       0       0       0       0       1       0       0       1       3       0       0       0       0       1       0       0       0       0       0`  
+  `ATAAAATGAA      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       1       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0       1       1`  
 `...`
 ### 3.3 Output files  
   
@@ -155,7 +155,7 @@ ASS_filtered_down/part-xxx:
     
   WR_filtered_down/part-xxx:  
       
-    `AGAAAATGAA      0.0     0.0     57.6735 0.0     45.5851 0.0     0.0     0.0     91.659  0.0     0.0     0.0     0.0     45.608  0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     45.5539 0.0     0.0     0.0     137.0677        45.7917 0.0     0.0     0.0     0.0     0.0     0.0     46.0851 45.7289 0.0     45.5332 0.0     45.5    0.0     45.819  0.0     0.0     0.0     0.0     0.0     91.5583 0.0       Wilcoxon_Pvalue:0.455057690499  Regress_ASS:0.56  Label:P`  
+    `CCCCCCGCCA      0.0     45.9369 0.0     136.9363        0.0     66.8896 57.2475 57.1755 0.0     45.6163 0.0     0.0     0.0     0.0     0.0     57.241  57.5639 0.0     0.0     0.0     57.1559 0.0     0.0     45.5539 0.0     0.0     0.0     0.0     45.7917 0.0     45.6433 0.0     0.0     0.0     0.0     46.0851 45.7289 0.0     0.0     0.0     0.0     0.0     0.0     45.5125 0.0     0.0     0.0     0.0     45.7792 0.0     Wilcoxon_Pvalue:0.18063688161   Regress_ASS:0.58        Label:H`  
     `...`  
   If you choose ‘chi2-test’ function to filter,the result will be like this:
     
@@ -164,7 +164,7 @@ ASS_filtered_down/part-xxx:
 `...`  
   
   WR_filtered_down/part-xxx:  
-  `AAGAAAAAGC      0.0     0.0     57.6735 0.0     0.0     0.0     0.0     0.0     0.0     91.2326 0.0     114.4885        0.0     45.608  45.527  0.0     57.5639 45.8295 45.8127 0.0     0.0     0.0     115.9824        0.0     0.0     0.0     0.0     0.0     45.6454 0.0     0.0     0.0     0.0     45.8295 0.0     0.0     0.0     0.0     45.608  45.527  0.0     57.5639 0.0     45.8127 0.0     57.1559 0.0     0.0     0.0     0.0     kp:0.761760667488       Wilcoxon_Pvalue:0.460934885855  RegressASS:0.54`  
+  `AGAAGATGAA      0.0     45.9369 0.0     0.0     0.0     0.0     57.2475 0.0     0.0     0.0     57.2738 0.0     49.1183 0.0     45.527  57.241  0.0     0.0     0.0     0.0     114.3118        49.3681 0.0     0.0     114.6789        0.0     0.0     45.6892 0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     0.0     47.644  45.819  0.0     0.0     0.0     45.8547 0.0     0.0     45.6871 kp:0.344704222007       Wilcoxon_Pvalue:0.196950152423  Regress_ASS:0.58`  
   
 (2) The Number of features in every sequencing files  
   
@@ -262,13 +262,13 @@ ASS_filtered_down/part-xxx:
   
 tuple_union/part-xxx:  
   
-  `ACCGTGCGTA      0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       2       0       0       0       0       0       0       0       0       0       0       0`  
-  `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `ACCGTGCGTA      0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0`  
+  `AAGAAAGCGA      0       0       0       0       0       2       0       0       0       0       1       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       1       0       0       0       0       1       0       0       1       3       0       0       0       0       1       0       0       0       0       0`  
   `...`  
   
 filter_sparse/part-xxx:  
   
-  `CAAGAACGGC      5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       1       0       0       3       0       0       2       0       0       0       0       1       0       1       0       0       1       0       0       0       0       0       0       1       1`  
+  `AAGAAAGCGA      0       0       0       0       0       2       0       0       0       0       1       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       1       0       0       0       0       1       0       0       1       3       0       0       0       0       1       0       0       0       0       0`  
   `...`  
   
 ## 4  The demo of GOES on testing dataset  
