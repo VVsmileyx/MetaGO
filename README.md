@@ -48,7 +48,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
 ### 2.2 Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/MetaGO/`  
    2.Enter the directory:*`$ cd /home/user/MetaGO`*  
-   3.Extract the tar file:*`$ unzip GOES_SourceCode.zip`*  
+   3.Extract the tar file:*`$ tar -xzvf MetaGO_SourceCode.tar.gz`*  
    4.Enter the directory:*`$ cd /home/user/MetaGO/MetaGO_SourceCode`*  
      
 ## 3  Running of MetaGO Pipeline  
