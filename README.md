@@ -1,22 +1,22 @@
-# Welcome to use GOES:Group specific Oligonucleotide analysis for Metagenomic samples 
+# Welcome to use MetaGO:Group specific Oligonucleotide analysis for Metagenomic samples 
   
-  GOES is a pipeline developed to identify group-specific sequences between two groups of high throughput sequencing samples with long k-mer (generally k=30-40) features. The group-specific here means being present or rich in one group but absent or scarce in another group. GOES is taxonomy-free and only on the frequency of k-mers.
+  MetaGo is a pipeline developed to identify group-specific sequences between two groups of high throughput sequencing samples with long k-mer (generally k=30-40) features. The group-specific here means being present or rich in one group but absent or scarce in another group. MetaGo is taxonomy-free and only on the frequency of k-mers.
     
-  GOES was developed with Python and implemented on Apache Spark under Unix and Linux platform, which can be run on HDFS of Hadoop or on a stand-alone multi-core server in parallel.
+  MetaGo was developed with Python and implemented on Apache Spark under Unix and Linux platform, which can be run on HDFS of Hadoop or on a stand-alone multi-core server in parallel.
     
-  The detail description of GOES’s framework is provided [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-detail-description-of-goess-framework).  
+  The detail description of MetaGO’s framework is provided [here](https://github.com/VVsmileyx/MetaGo/blob/master/README.md#the-detail-description-of-goess-framework).  
     
-  The installing and running manual of GOES is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-installing-and-running-manual-of-goes).  
+  The installing and running manual of MetaGO is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-installing-and-running-manual-of-goes).  
     
 ## Version Release Notes  
  - Version 1.0  
-   1.This is the first version of GOES pipeline. ([Source code Download](https://github.com/VVsmileyx/GOES/raw/master/GOES_SourceCode.zip))  
-   2.An demo of GOES is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-demo-of-goes-on-testing-dataset).  
+   1.This is the first version of MetaGo pipeline. ([Source code Download](https://github.com/VVsmileyx/GOES/raw/master/GOES_SourceCode.zip))  
+   2.An demo of MetaGO is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-demo-of-goes-on-testing-dataset).  
      
 ## Development Team  
   The whole source code was developed by Ying Wang's group, Automation Department, Xiamen University, P.R.China. All the suggestions and questions are welcome to wangying AT xmu.edu.cn.  
    
-## 1  The description of GOES’s framework  
+## 1  The description of MetaGO’s framework  
 ![](https://github.com/VVsmileyx/Results-and-figures/blob/master/figure1.jpg)
 The figure shows the profile of the computational framework, which includes following three modules. 1) Building feature vector of each sample. For each metagenomic sequencing data, the feature vector is composed of the number of occurrence for each k-mer through all the reads. 2) Feature preprocessing. After preprocessing and normalization, the union matrix is integrated on the feature vectors across the training samples. The high-sparse features obviously have no contribution to separate the groups are filtered out. 3) Identify group-specific features. The logical and numerical features are filtered and selected with discriminating power.  
   
@@ -25,7 +25,7 @@ The following two figures give the processing pipeline for training and testing 
 Apache Spark is a fast big data analytics engine on MapReduce framework and Hadoop Distributed File System (HDFS) [31]. In parallel programming, Spark supplies Resilient Distributed Datasets (RDDs) and parallel operations on datasets. RDD enables programmers perform in-memory computations on large clusters. The map and reduce RDD frame works is shown in the following figure.  
 ![](https://github.com/VVsmileyx/Results-and-figures/blob/master/figure4.jpg)
   
-## 2  The installing and running manual of GOES
+## 2  The installing and running manual of MetaGO
 ### 2.1 Package installation and environment configuration  
 #### 2.1.1 Pre-install environments and softwares  
    1.Unix or Linux operating system.  
@@ -46,15 +46,15 @@ then use command *`$ source ~/.bashrc`* to make it effective
   Our codes are tested on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/GOES/raw/master/Environmental_configuration_of_Spark.docx).For running on the cluster mode of HDFS of Hadoop, the configuration instruction can be found [here](https://spark.apache.org/docs/latest/spark-standalone.html), but we have not tested the program on this mode.  
     
 ### 2.2 Installation steps  
-   1.Download the source code to your directory, e.g:`/home/user/GOES/`  
-   2.Enter the directory:*`$ cd /home/user/GOES`*  
+   1.Download the source code to your directory, e.g:`/home/user/MetaGO/`  
+   2.Enter the directory:*`$ cd /home/user/MetaGO`*  
    3.Extract the tar file:*`$ unzip GOES_SourceCode.zip`*  
-   4.Enter the directory:*`$ cd /home/user/GOES/GOES_SourceCode`*  
+   4.Enter the directory:*`$ cd /home/user/MetaGO/MetaGO_SourceCode`*  
      
-## 3  Running of GOES Pipeline  
+## 3  Running of MetaGO Pipeline  
   
 ### 3.1 command line  
-- The main running command is *`$ bash GOES.sh`* with following options:  
+- The main running command is *`$ bash MetaGO.sh`* with following options:  
   
 short option |  long option  |   description  
   :-----------: | :-----------:  | :----------------:   
@@ -72,7 +72,7 @@ short option |  long option  |   description  
   -W | --filterFuction | The function of the filter, you can choose 'chi2-test' or 'ASS', default is ASS.  
   -O | --outputPath | The path of the output files, default is current directory.  
   -U | --Union | If you choose this option, the integrated feature matrix (without any filter ) will be saved and output named ‘tuple-union’ or ‘tuple-union-x’(x = 1,2,...,k, k is the number you choosed in option '-P').  
-  -S | --sparse | If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘filter_sparse_x ’(x = 1,2,...,k, k is the number you choosed in option '-P')  or ‘filter_sparse’. The filtered matrix can be the input of GOES.sh as '-I MATRIX' when it is required to adjust the threshold of group-specific selections.    
+  -S | --sparse | If you choose this option, the union matrix files after filtering high-sparse features will be saved named ‘filter_sparse_x ’(x = 1,2,...,k, k is the number you choosed in option '-P')  or ‘filter_sparse’. The filtered matrix can be the input of MetaGO.sh as '-I MATRIX' when it is required to adjust the threshold of group-specific selections.    
   -Z | --cleanUp | If choose this option, the temporary files produced during the running will be cleaned up, and only output the selected group-specific k-mers. The temporary files includ tuple files, splited files, which have been named as ‘G1_tupleFile’ and ‘G2_tupleFile’ and ‘Group1splitedFile’ and ‘Group2splitedFile’ and ‘fastaFile’ separately.  
   -h | --help | show the help message.  
   
@@ -80,7 +80,7 @@ short option |  long option  |   description  
   
   (1) It takes a few days(60 hours for 250GB fa.gz of 100 samples) to finish the whole running. So the feature matrix after filtering out highly-sparse is output for the following thresholds adjustment of ASS, p-value. So using -S|--sparse to output the feature matrix filtering out the highly-sparse. And then use -I  MATRIX is useful when we set the ASS, p-value too stringent to get group-specific k-mers. So we use the filtered feature matrix as input to select group-specific k-mers with relaxed throsholds.  
     
- (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') and the file contanins the number of features in every sequencing file ('TupleNumber.txt') are in the folder which you choosed in option -O (e.g. /home/user/GOES/Results). Furthermore the following files should not be in /home/user/GOES/Results: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
+ (2) If you choose 'MATRIX' in option -I, you should not choose the following options: -F, -K, -m, -U, -S, -Z. And make sure the feature matrix filtering out the highly-sparse ('filter_sparse_x' or 'filter_sparse') and the file contanins the number of features in every sequencing file ('TupleNumber.txt') are in the folder which you choosed in option -O (e.g. /home/user/MetaGO/Results). Furthermore the following files should not be in /home/user/MetaGO/Results: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
     
   (3) If you choose 'ASS' in option -W, you should not choose -C; IF you use 'chi2-test' in option -W, you should not choose -A.
      
@@ -88,24 +88,24 @@ short option |  long option  |   description  
 ##### 3.1.2.1 InputData is raw data  
 If the input file you selected is the list of sequencing files with .fa, .fa.gz, .fq, .fq.gz and .sra formats(choose 'RAW' in option '-I'), the following examples can be used.  
   
-(1)*`$ bash-3.2$ bash GOES.sh -I RAW –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ -Z`*  
-(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.8, 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/GOES/)  
+(1)*`$ bash-3.2$ bash MetaGO.sh -I RAW –F FileList.txt –N 25 –M 25 –K 10 –m 1 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/MetaGO/ -Z`*  
+(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.8, 0.01 and 0.8 separately. All Intermediate files are not saved.  The union matrix files are not saved except the files that after filtering by AUC, and all saved files are preserved in /home/usr/MetaGO/)  
   
 The Filelist.txt must obey the following rules:  
-Each line is the complete path of raw data, such as the first line is '/home/user/GOES/testData/H1.fasta', and the second line is '/home/user/GOES/testData/H2.fasta' ... Furthermore, and the samples belong to same group must arrange togther(e.g. line1 to linek of the list belongs to group 1 (health) and linek+1 to lineN belongs to group 2 (patient) ).  
+Each line is the complete path of raw data, such as the first line is '/home/user/MetaGO/testData/H1.fasta', and the second line is '/home/user/MetaGO/testData/H2.fasta' ... Furthermore, and the samples belong to same group must arrange togther(e.g. line1 to linek of the list belongs to group 1 (health) and linek+1 to lineN belongs to group 2 (patient) ).  
   
-(2)*`$ bash-3.2$ bash GOES.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 –T 0.01 –C 0.01 –W chi2-test –O /home/usr/GOES/ -S –U –Z`*  
-(The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. All tuple files are split into 4 slices. The filter function is chi2-test and don’t save any Intermediate files but save the feature matrix that without any filter and save the feature matrix after filtering out highly-sparse features and all saved files are perserved in /home/usr/GOES/ )  
+(2)*`$ bash-3.2$ bash MetaGO.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 –T 0.01 –C 0.01 –W chi2-test –O /home/usr/MetaGO/ -S –U –Z`*  
+(The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. All tuple files are split into 4 slices. The filter function is chi2-test and don’t save any Intermediate files but save the feature matrix that without any filter and save the feature matrix after filtering out highly-sparse features and all saved files are perserved in /home/usr/MetaGO/ )  
   
-(3)*`$ bash-3.2$ bash GOES.sh -I RAW –F Filelist.txt –N 25 –M 25 –K 10 –m 1 -P 4 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –S –Z`*  
-(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.9, 0.1 and 0.8 separately. All Intermediate files are not saved. The threshold of ASS, p-value is too stringent, so we choose -S to output the feature matrix filtering out highly-sparse features, and that we can adjust the thresholds by using them as input. All the outputs are preserved in /home/usr/GOES/ )
+(3)*`$ bash-3.2$ bash MetaGO.sh -I RAW –F Filelist.txt –N 25 –M 25 –K 10 –m 1 -P 4 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/MetaGO/ –S –Z`*  
+(The input file is Filelist.txt, there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the mininum tuple frequency is 1.All tuple files are split into 4 slices. The filter function is ASS and the threshold of ASS, Wilcoxon test and Logical regression are 0.9, 0.1 and 0.8 separately. All Intermediate files are not saved. The threshold of ASS, p-value is too stringent, so we choose -S to output the feature matrix filtering out highly-sparse features, and that we can adjust the thresholds by using them as input. All the outputs are preserved in /home/usr/MetaGO/ )
   
 #### 3.1.2.2 InputData is the feature matrix filtering out highly-sparse features  
 If the input file you selected is the feature matrix filtering out highly-sparse features, the following examples can be used.  
-*`$ bash-3.2$ bash GOES.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/GOES/ –S –Z`*  
+*`$ bash-3.2$ bash MetaGO.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 -R 0.9 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/MetaGO/ –S –Z`*  
 The threshold of filtering out highly-sparse features, ASS, p-value is too stringent, so we choose -S to save the feature matrix filtering out highly-sparse features, and that we can adjust the thresholds by using them as input as following command:  
-*`$ bash-3.2$ bash GOES.sh -I MATRIX –N 25 –M 25 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/GOES/ `*  
-(The input file is the feature matrix without any filtering in /home/usr/GOES/, which named "filter_sparse_1","filter_sparse_2","filter_sparse_3","filter_sparse_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is ASS and ASS, Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/GOES/)  
+*`$ bash-3.2$ bash MetaGO.sh -I MATRIX –N 25 –M 25 –P 4 –A 0.8 –X 0.01 –L 0.8 –W ASS –O /home/usr/MetaGO/ `*  
+(The input file is the feature matrix without any filtering in /home/usr/MetaGO/, which named "filter_sparse_1","filter_sparse_2","filter_sparse_3","filter_sparse_4", there are 25 samples in group 1 and 20 samples in group 2.The number of input files is the 4. The filter function is ASS and ASS, Wilcoxon test and Logical regression are 0.8 0.01 and 0.8 separately.All saved files are preserved in /home/usr/MetaGO/)  
   
 ### 3.2 Input file  
 #### 3.2.1 InputData is raw data  
@@ -256,7 +256,7 @@ ASS_filtered_down/part-xxx:
   
 - Description  
   
-  If you running GOES with choosing  '-U' and '-S' and choosing RAW in option -I, you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'tuple_union' and 'filter_sparse'.If you choose MATRIX in option -I, and choose '-S', you can get 'filter_sparse_x'( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'filter_sparse'.  
+  If you running MetaGO with choosing  '-U' and '-S' and choosing RAW in option -I, you can get 2 results in the path you choosed in '-O':'tuple_union_x' and 'filter_sparse_x'( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'tuple_union' and 'filter_sparse'.If you choose MATRIX in option -I, and choose '-S', you can get 'filter_sparse_x'( x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'filter_sparse'.  
   
 - Example  
   
@@ -271,26 +271,26 @@ filter_sparse/part-xxx:
   `AAGAAAGCGA      0       0       0       0       0       2       0       0       0       0       1       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       1       0       0       0       0       1       0       0       1       3       0       0       0       0       1       0       0       0       0       0`  
   `...`  
   
-## 4  The demo of GOES on testing dataset  
+## 4  The demo of MetaGO on testing dataset  
 
 ### 4.1 Dataset  
    25 healthy test samples and 25 patient test samples ([download](https://github.com/VVsmileyx/TestData/raw/master/testDATA.zip))  
 ### 4.2 Running steps:  
 #### 4.2.1 InputData is raw data
-- Step1: download testData and GOES souce code  
+- Step1: download testData and MetaGO souce code  
 - Step2: get the fileList of test data  
 	  
 	*`$ cd testData`*  
 	*`$ pwd # get the absolute path of testData, e.g /home/usr/testDATA/`*  
-	*`$ ls /home/usr/testDATA/H*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # /home/usr/GOES/GOES_SoueceCode/ is the absolute path of sorce codes of GOES`*  
-	*`$ ls /home/usr/testDATA/P*.txt >> /home/usr/GOES/GOES_SoueceCode/fileList.txt # get the fileList of test data`*  
+	*`$ ls /home/usr/testDATA/H*.txt >> /home/usr/MetaGO/MetaGO_SoueceCode/fileList.txt # /home/usr/MetaGO/MetaGO_SoueceCode/ is the absolute path of sorce codes of MetaGO`*  
+	*`$ ls /home/usr/testDATA/P*.txt >> /home/usr/MetaGO/MetaGO_SoueceCode/fileList.txt # get the fileList of test data`*  
 	  
-- Step3: run GOES:  
+- Step3: run MetaGO:  
 	  
-	*`$ cd home/usr/GOES/GOES_SoueceCode`*  
-	*`$ mkdir /home/usr/GOES_Result # creat a folder to save output files`*  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/GOES_Result -U -S # Filter with ASS `*  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
+	*`$ cd home/usr/MetaGO/MetaGO_SoueceCode`*  
+	*`$ mkdir /home/usr/MetaGO_Result # creat a folder to save output files`*  
+	*`$ bash MetaGO.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/MetaGO_Result -U -S # Filter with ASS `*  
+	*`$ bash MetaGO.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/MetaGO_Result -U -S # Filter with chi2-test `*  
 	  
 - Step4: Output files  
 	   
@@ -318,19 +318,19 @@ filter_sparse/part-xxx:
   
   The matrix files are the files named 'filter_sparse_x' (x = 1,2,...,k, k is the number you choosed in option '-P') or 'filter_sparse' in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'  
   
-- Step1: run GOES with choosing 'RAW' in option '-I'  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/GOES_Result -U -S # Filter with AUC_test `*  
-	*`$ bash GOES.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/GOES_Result -U -S # Filter with chi2-test `*  
+- Step1: run MetaGO with choosing 'RAW' in option '-I'  
+	*`$ bash MetaGO.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/MetaGO_Result -U -S # Filter with AUC_test `*  
+	*`$ bash MetaGO.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/MetaGO_Result -U -S # Filter with chi2-test `*  
   
 - Step2: remove or change the path of the following folders: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
-	*`$ cd /home/usr/GOES_Result`*  
+	*`$ cd /home/usr/MetaGO_Result`*  
 	*`$ rm -r ASS_filtered_down* Chi2_filtered_down* WR_filtered_down* # remove all folders`*  
 	*`$ mv ASS_filtered_down* Chi2_filtered_down* WR_filtered_down* ../ # move all folders to parent directory`*  
-	*`$ cd home/usr/GOES/GOES_SoueceCode`*
+	*`$ cd home/usr/MetaGO/MetaGO_SoueceCode`*
   
-- Step3: run GOES with choosing 'MATRIX' in option '-I'  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.2 -L 0.5 -W ASS -O /home/usr/GOES_Result # Filter with ASS `*  
-	*`$ bash GOES.sh -I MATRIX -N 25 -M 25 -P 4 -C 0.2 -X 0.2 -L 0.5 -W chi2-test -O /home/usr/GOES_Result # Filter with chi2-test `*   
+- Step3: run MetaGO with choosing 'MATRIX' in option '-I'  
+	*`$ bash MetaGO.sh -I MATRIX -N 25 -M 25 -P 4 -A 0.6 -X 0.2 -L 0.5 -W ASS -O /home/usr/MetaGO_Result # Filter with ASS `*  
+	*`$ bash MetaGO.sh -I MATRIX -N 25 -M 25 -P 4 -C 0.2 -X 0.2 -L 0.5 -W chi2-test -O /home/usr/MetaGO_Result # Filter with chi2-test `*   
   
 - Step4: Output files  
   
