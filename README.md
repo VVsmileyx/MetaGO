@@ -4,14 +4,14 @@
     
   MetaGo was developed with Python and implemented on Apache Spark under Unix and Linux platform, which can be run on HDFS of Hadoop or on a stand-alone multi-core server in parallel.
     
-  The detail description of MetaGO’s framework is provided [here](https://github.com/VVsmileyx/MetaGo/blob/master/README.md#the-detail-description-of-goess-framework).  
+  The detail description of MetaGO’s framework is provided [here](https://github.com/VVsmileyx/MetaGO#1--the-description-of-metagos-framework).  
     
-  The installing and running manual of MetaGO is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-installing-and-running-manual-of-goes).  
+  The installing and running manual of MetaGO is [here](https://github.com/VVsmileyx/MetaGO#2--the-installing-and-running-manual-of-metago).  
     
 ## Version Release Notes  
  - Version 1.0  
    1.This is the first version of MetaGo pipeline. ([Source code Download](https://github.com/VVsmileyx/MetaGO/raw/master/MetaGO_SourceCode.tar.gz))  
-   2.An demo of MetaGO is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-demo-of-goes-on-testing-dataset).  
+   2.An demo of MetaGO is [here](https://github.com/VVsmileyx/MetaGO#4--the-demo-of-metago-on-testing-dataset-).  
      
 ## Development Team  
   The whole source code was developed by Ying Wang's group, Automation Department, Xiamen University, P.R.China. All the suggestions and questions are welcome to wangying AT xmu.edu.cn.  
@@ -43,7 +43,7 @@ then use command *`$ source ~/.bashrc`* to make it effective
   
 #### 2.1.2 Environmental configurations for Spark  
   
-  Our codes are tested on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/GOES/raw/master/Environmental_configuration_of_Spark.docx).For running on the cluster mode of HDFS of Hadoop, the configuration instruction can be found [here](https://spark.apache.org/docs/latest/spark-standalone.html), but we have not tested the program on this mode.  
+  Our codes are tested on a local mode of a server with 128G-memory and Intel(R) Xeon(R) CPU E5-2620 v4 with 8 CPU cores at 2.10 GHz.The instruction of environmental configuration for Spark with local mode can be download [here](https://github.com/VVsmileyx/MetaGO/raw/master/Environmental_configuration_of_Spark.docx).For running on the cluster mode of HDFS of Hadoop, the configuration instruction can be found [here](https://spark.apache.org/docs/latest/spark-standalone.html), but we have not tested the program on this mode.  
     
 ### 2.2 Installation steps  
    1.Download the source code to your directory, e.g:`/home/user/MetaGO/`  
