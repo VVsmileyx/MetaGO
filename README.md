@@ -10,7 +10,7 @@
     
 ## Version Release Notes  
  - Version 1.0  
-   1.This is the first version of MetaGo pipeline. ([Source code Download](https://github.com/VVsmileyx/GOES/raw/master/GOES_SourceCode.zip))  
+   1.This is the first version of MetaGo pipeline. ([Source code Download](https://github.com/VVsmileyx/MetaGO/raw/master/MetaGO_SourceCode.tar.gz))  
    2.An demo of MetaGO is [here](https://github.com/VVsmileyx/GOES/blob/master/README.md#the-demo-of-goes-on-testing-dataset).  
      
 ## Development Team  
