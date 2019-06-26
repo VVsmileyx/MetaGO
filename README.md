@@ -282,8 +282,8 @@ filter_sparse/part-xxx:
 	  
 	*`$ cd testData`*  
 	*`$ pwd # get the absolute path of testData, e.g /home/usr/testDATA/`*  
-	*`$ ls /home/usr/testDATA/H*.txt >> /home/usr/MetaGO/MetaGO_SoueceCode/fileList.txt # /home/usr/MetaGO/MetaGO_SoueceCode/ is the absolute path of sorce codes of MetaGO`*  
-	*`$ ls /home/usr/testDATA/P*.txt >> /home/usr/MetaGO/MetaGO_SoueceCode/fileList.txt # get the fileList of test data`*  
+	*`$ ls /home/usr/testDATA/H*.fasta >> /home/usr/MetaGO/MetaGO_SoueceCode/fileList.txt # /home/usr/MetaGO/MetaGO_SoueceCode/ is the absolute path of sorce codes of MetaGO`*  
+	*`$ ls /home/usr/testDATA/P*.fasta >> /home/usr/MetaGO/MetaGO_SoueceCode/fileList.txt # get the fileList of test data`*  
 	  
 - Step3: run MetaGO:  
 	  
