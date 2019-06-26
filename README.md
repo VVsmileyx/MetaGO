@@ -289,8 +289,8 @@ filter_sparse/part-xxx:
 	  
 	*`$ cd home/usr/MetaGO/MetaGO_SoueceCode`*  
 	*`$ mkdir /home/usr/MetaGO_Result # creat a folder to save output files`*  
-	*`$ bash MetaGO.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/MetaGO_Result -U -S # Filter with ASS `*  
-	*`$ bash MetaGO.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/MetaGO_Result -U -S # Filter with chi2-test `*  
+	*`$ bash MetaGO.sh -I RAW -F fileList.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/MetaGO_Result -U -S # Filter with ASS `*  
+	*`$ bash MetaGO.sh -I RAW -F fileList.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/MetaGO_Result -U -S # Filter with chi2-test `*  
 	  
 - Step4: Output files  
 	   
@@ -319,8 +319,8 @@ filter_sparse/part-xxx:
   The matrix files are the files named 'filter_sparse_x' (x = 1,2,...,k, k is the number you choosed in option '-P') or 'filter_sparse' in the folder you choose in option '-O',which are the results of running the program last time with chooseing 'RAW' in option '-I'., and you should remove or change the path of the following folders: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P' ) or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'  
   
 - Step1: run MetaGO with choosing 'RAW' in option '-I'  
-	*`$ bash MetaGO.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/MetaGO_Result -U -S # Filter with AUC_test `*  
-	*`$ bash MetaGO.sh -I RAW -F testFiles.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/MetaGO_Result -U -S # Filter with chi2-test `*  
+	*`$ bash MetaGO.sh -I RAW -F fileList.txt -N 25 -M 25 -K 10 -m 1 -P 4 -A 0.65 -X 0.1 -L 0.5 -W ASS -O /home/usr/MetaGO_Result -U -S # Filter with AUC_test `*  
+	*`$ bash MetaGO.sh -I RAW -F fileList.txt -N 25 -M 25 -K 10 -m 1 -P 4 -C 0.1 -X 0.1 -L 0.5 -W chi2-test -O /home/usr/MetaGO_Result -U -S # Filter with chi2-test `*  
   
 - Step2: remove or change the path of the following folders: 'ASS_filtered_down_x', 'Chi2_filtered_down_x', 'WR_filtered_down_x'(x = 1,2,...,k, k is the number you choosed in option '-P') or 'ASS_filtered_down', 'Chi2_filtered_down', 'WR_filtered_down'.  
 	*`$ cd /home/usr/MetaGO_Result`*  
