@@ -94,7 +94,7 @@ If the input file you selected is the list of sequencing files with .fa, .fa.gz,
 The Filelist.txt must obey the following rules:  
 Each line is the complete path of raw data, such as the first line is '/home/user/MetaGO/testData/H1.fasta', and the second line is '/home/user/MetaGO/testData/H2.fasta' ... Furthermore, and the samples belong to same group must arrange togther(e.g. line1 to linek of the list belongs to group 1 (health) and linek+1 to lineN belongs to group 2 (patient) ).  
   
-(2)*`$ bash-3.2$ bash MetaGO.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 –T 0.01 –C 0.01 –W chi2-test –O /home/usr/MetaGO/ -S –U –Z`*  
+(2)*`$ bash-3.2$ bash MetaGO.sh -I RAW –F fileList.txt –N 25 –M 25 –K 10 –m 1 -P 4 –C 0.01 –W chi2-test –O /home/usr/MetaGO/ -S –U –Z`*  
 (The input file is filelist.txt , there are 25 samples in group 1 and 20 samples in group 2, the tuple length is 10 and the min tuple frequency is 1. All tuple files are split into 4 slices. The filter function is chi2-test and don’t save any Intermediate files but save the feature matrix that without any filter and save the feature matrix after filtering out highly-sparse features and all saved files are perserved in /home/usr/MetaGO/ )  
   
 (3)*`$ bash-3.2$ bash MetaGO.sh -I RAW –F Filelist.txt –N 25 –M 25 –K 10 –m 1 -P 4 –A 0.9 –X 0.001 -L 0.8 –W ASS –O /home/usr/MetaGO/ –S –Z`*  
